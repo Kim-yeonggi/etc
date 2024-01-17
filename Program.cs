@@ -8,6 +8,7 @@ namespace Helloworld    // 네임스페이스 지정
     {
         static void Main()  // 함수 선언
         {
+            /*
             //Console.WriteLine("Hello World");   // 실행문
             WriteLine("Hello World");
 
@@ -133,16 +134,678 @@ namespace Helloworld    // 네임스페이스 지정
             string msg = "hellooooo";
             Console.WriteLine($"{msg}");
 
+            // 문자데이터 형식 char
+            // 숫자 외의 데이터 형식(bool. char, string 등)
+            // C#에서는 문자와 문자열을 구분
+            // 문자는 char로 데이터 타입 정의
+            // 문자는 2바이트 공간에 문자 하나를 저장한다.
+            // 문자는 데이터 선언에 작은 따옴표 '' 사용
+            // char c = 'c' 형태
+            char c = 'c';
+            Console.WriteLine(c);
+            // 2바이트는 16비트 저장공간을 의미
+            // char 키워드로 선언되는 변수는 단일 유니코드 문자 저장
+            // 영문 및 한글 등 모든 언어 문자 표현 가능
+            // 단일 캐릭터 char 데이터 타입에는 문자 여러개 저장 불가
+            // 닷넷 형식으로는 System.Char로 표현한다.
+            System.Char cc = 'a';
+            Console.WriteLine(cc);
+            char kor = '가';
+            char grade = 'A';
+            Console.WriteLine(kor);
+            Console.WriteLine(grade);
+            // char 타입 변수에 문자를 하나 이상 지정할 경우
+            // 문자 리터럴에 문자가 너무 많다는 오류 발생   // ex) char x = 'abc';
+
+
+            // 문자열 데이터 형식 string
+            // 문자열을 반드시 큰 따옴표 "" 로 묶음
+            // 낫넷 형식으로는 System.String
+            string name = "kim";
+            System.String name2 = "Lee";
+            Console.WriteLine(name);
+            Console.WriteLine(name2);
+
+            // 문자열 보간법
+            Console.WriteLine($"{name} {name2}");
+
+            // string.Format() 함수 사용
+            String msg1 = string.Format("{0} {1}","아","어");
+            Console.WriteLine(msg1);
+
+            String msg2 = "String";
+            Console.WriteLine("Message: {0}", msg2);
+            Console.WriteLine("Message: " + msg2);  // 더하기 연산
+            Console.WriteLine($"Message: {msg2}");  // 보간법
+
+            // bool
+            // true false
+
+            bool bln = true;
+            bool bln2 = false;
+            Console.WriteLine(bln);
+            Console.WriteLine(bln2);
+
+            Char ccc = 'A';
+            Console.WriteLine(ccc);
+
+            Console.ReadLine(); // 입력대기  input 과 동일
+            Console.WriteLine(Console.ReadLine());  // print(input())
+            
+            Console.Write("이름을 입력하세요");
+            string namex = Console.ReadLine();
+            Console.WriteLine("{0}을 입력함", namex);
+
+
+            // Console.Read() 메서드를 사용하면 콘솔에서 문자를 하나만 입력받을 수 있다.
+            // 입력값은 문자에 해당하는 정수로 반환된다. -> 변환 필요
+            // Convert.ToChar() 메서드를 사용해서 변환
+            int aaa = Console.Read();                   // A 입력
+            Console.WriteLine(aaa);                     // 65 출력
+            Console.WriteLine(Convert.ToChar(aaa));     // A 출력
+
+            // 형식 변환
+            // Console.ReadLine() 메서드를 통해 콘솔에서 입력받은 데이터는 문자열
+            // ReadLine()으로 입력받은 문자열을 형 변환
+
+            // 1. 명시적 형변환
+            // 2. 암시적 형변환
+
+            // 암시적 형 변환은 변환 형식이 안전하게 유지되고 데이터가 손실되지 않는다.
+
+            int x1 = 123;
+            long x2 = x1;       // 암시적 형변환 예
+
+            long x3 = 123;
+            //int x4 = x3;      // 비트수 long > int => 에러 발생
+            int x4 = (int)x3;   // 명시적 형변환
+            // 형변환 : 캐스팅
+            // 이 경우에서 (int)하지 않으면 데이터 손실 발생 오류
+
+
+            // Convert 클래스의 주요 메서드  : 명시적 형변환
+            // 1. ToString()    : 숫자 데이터 형식을 문자열로 변환
+            // 2. ToInt32()     : 정수 형식으로 변환
+            // 3. ToDouble()    : 실수 형식으로 변환
+            // 4. ToChar()      : 문자 형식으로 변환
+            // ex) Convert.ToString();
+
+
+            // int.Parse() (명시적)형변환
+            string strnum = "1234";
+            int y = int.Parse(strnum);
+            Console.WriteLine(y);
+
+
+            // TryParse 메서드
+            string strA = "10";
+            string strB = "12.345";
+            string strC = null;
+
+            int i;
+            Int32.TryParse(strA, out i);	// true (123)
+            Int32.TryParse(strB, out i);	// false (0)
+            Int32.TryParse(strC, out i);	// false (0)
+
+
+            // GetType() 메서드
+            int i = 1234;
+            string ii = "안녕";
+            char iii = 'c';
+            double iiii = 3.14;
+            Console.WriteLine(i.GetType());
+            Console.WriteLine(ii.GetType());
+            Console.WriteLine(iii.GetType());
+            Console.WriteLine(iiii.GetType());
+            // 파이썬 type() 메서드 비슷하게 활용
+            // 데이터 타입 확인 메서드
+
+
+            // 이진수 다루기
+            Console.WriteLine(Convert.ToString(10, 2)); // 10진수 10을 2진수로 변환
+            // 이진수 표현 1010
+            
+            Console.WriteLine(Convert.ToString(10, 2).PadLeft(8, '0'));
+            // 8칸 기준으로 이진수 문자열 출력, 앞부분 0으로 채움
+
+
+            // 바이트 선언
+            byte b1 = 0b0010;
+            byte x = 0x1f;
+            Console.WriteLine(b1);  // 십진수 2 출력
+            Console.WriteLine(x);  // 십진수 31 출력
+            // 소스코드에서는 기본적으로 십진수 단위로 자료가 처리된다.
+
+
+            int bin = 0b0001_0001;  // 4자리씩 _
+            Console.WriteLine(bin); // 17
+
+            int dec = 1_000_000;    // 3자리씩 _
+            Console.WriteLine(dec);
+
+            int hex = 0xA0_B0_C0;   // 2자리씩 _
+            Console.WriteLine(hex);
+
+            // var 키워드로 암시적 형식의 변수 생성
+            var num100 = 100;
+            Console.WriteLine(num100);
+            var strrrr = "hello";
+            Console.WriteLine(strrrr);
+            Console.WriteLine(num100.GetType());    // System.Int32
+            */
+
+            /*
+            // ReadKey() 메서드
+            // 키보드에서 입력한 키를 알아내는 키워드
+            Console.WriteLine("키보드 입력");
+            ConsoleKeyInfo cki = Console.ReadKey(true);
+            Console.WriteLine(cki.Key);
+            Console.WriteLine(cki.KeyChar);
+            Console.WriteLine(cki.Modifiers);
+            if (cki.Key == ConsoleKey.Q)
+            {
+                Console.WriteLine("Q를 눌렀다.");
+            }
+
+            // 변수의기본값을 default 키워드로 설정
+            // 변수를 선언 및 초기화 할 때, 해당 변수의 데이터 형식으로 초기화 한다.
+            // 초기화 할 때 default 키워드로 초기화 가능
+
+            int xxx = default;  // defalut 로 임시 할당, int 형의 기본값 0 할당
+            bool bd = default;  // bool 형의 기본값 false 할당
+            Console.WriteLine(xxx);
+            Console.WriteLine(bd);
+
+
+            // 연산자
+            // + - * /
+            // 대입 산술 관계 비교 논리 증감 비트 시프트
+            // 1개의 항을 연산하는 단항 연산자
+            // 2개의 항을 연산하는 이항 연산자
+            // 3개의 항을 연산하는 삼항 연산자
+
+            // 연산자와 피연산자
+
+            int num1 = 1000;
+            int number = num1 + 1233;
+
+
+            // 단항 연산자 +
+            int num2 = -8;
+            num2 = +num2;   // +8 로 부호 변경
+
+
+            // (int) 변환 연산자
+
+
+            // 할당 연산자
+            // = : 대입 할당
+            // +=  -=  *=  /=  %=       a += 10  ==  a = a + 10
+
+
+            // 증감연산자
+            // ++
+            // --
+            int m = 10;
+            Console.WriteLine(m++);
+            Console.WriteLine(++m);
+            Console.WriteLine(m);
+
+            // 선 연산 후 대입(전위 증감 연산)  ++m
+            // 선 대입 후 연산(후위 증감 연산)  m++
 
 
 
 
 
 
+            // 관계 연산자(비교 연산자) : >   <   >=   <=   ==   !=
+            // 논리 연산자 : and   or   not
+            //               &&    ||    !
+            // 양쪽이 true 일 때 true : and
+            // 양쪽 중 하나가 true 일 때 true : or
+            // 반대로 뒤집기 : not
+            Console.WriteLine(true || false);
+
+
+            var i = 3;
+            var j = 5;
+            var r = false;
+            r = (i == 3) && (j != 3);   // true
+            Console.WriteLine(r);
+            r = (i != 3) || (j == 3);   // false
+            Console.WriteLine(r);
+
+
+            // 조건 연산자
+            // 조건 연산자는 조건에 따라 true일 때와 false 일때 결과를 다르게 반환한다.
+            // ? : 형태로 사용
+            // 조건문 ? true 일 경우 실행 할 코드 : false 일 경우 실행 할 코드
+            Console.WriteLine((5 > 3) ? "TRUE" : "FALSE");
+
+
+            // sizeof()
+            // sizeof(int)  //  4
 
 
 
 
-        }   
+            // if
+            // if(조건식)
+            // {
+            //      실행문
+            // }
+
+
+            // python : if    elif    else
+            // c# : if    else if    else
+            int aaa = 100;
+            if (aaa > 100)
+            {
+                Console.WriteLine(aaa);
+            }
+            else if (aaa == 100)
+            {
+                Console.WriteLine(aaa);
+            }
+            else 
+            {
+                Console.WriteLine(aaa); 
+            }
+            */
+
+            /*
+            // ex) 사용자에게 문자를 입력받아서 해당 문자에 대한 ascii 상 해당 문자에 대응하는 10진수 숫자가
+            //     100보다 큰 문자라면 100보다 크라 라고 출력
+            //     그렇지 않으면 입력 문자에 해당하는 숫자와 문자 출력
+            Console.Write("문자 입력 : ");
+            int input_char = Console.Read();        // char 입력받을 땐 Console.Read()
+
+            if (input_char > 100)
+            {
+                Console.WriteLine("100보다 크다");
+            }
+            else
+            {
+                Console.WriteLine("{0}, {1}",input_char, Convert.ToChar(input_char));
+            }
+            */
+
+
+            // switch 문
+            // 조건문
+
+            // switch(식)
+            // {
+            //      case 값1:
+            //          실행문1;
+            //          break;
+            //      case 값2:
+            //          실행문2;
+            //          break;
+            //      case 값3:
+            //          실행문3;
+            //          break;
+            // }
+
+            /*
+            int user = Console.Read();
+            switch (user)
+            {
+                case 65:    // A 입력
+                    Console.WriteLine("A를 입력했다.");
+                    break;
+                case 66:
+                    Console.WriteLine("B를 입력했다.");
+                    break;
+                case 67:
+                    Console.WriteLine("C를 입력했다.");
+                    break;
+
+                default:
+                    Console.WriteLine("해당 x");
+                    break;
+            }
+
+
+
+            // for문
+            // for(int i=0; i < 10; i++)        (선언문; 조건문; 증감문)
+            // {
+            //      실행문;
+            // }
+            // i 가 0부터 10보다 작을 때까지 매 바퀴 i가 1씩 증가하면서 실행문 반복
+            for(int k = 0; k<10; k++)       // == for i in range(10)
+            {
+                Console.WriteLine(k);
+            }
+
+
+            // 무한루프
+            // for(;;)
+            */
+
+            /*
+            // 연습) 구구단 가로 출력
+            for (int i = 2; i<10;i++)
+            {
+                Console.Write($"   {i}단\t");
+            }
+            for (int j = 1; j<10; j++)
+            {   
+                Console.WriteLine();
+                for (int k = 2; k<10; k++)
+                {
+                    Console.Write($"{k}*{j}={k*j, 2}  ");
+                    //if (k * j >= 10)
+                    //{
+                    //    Console.Write($"{k}*{j}={k * j}\t");
+                    //}
+                    //else
+                    //{
+                    //    Console.Write($"{k}*{j}= {k * j}\t");
+                    //}
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            */
+
+
+            /*
+            // while 문
+            // while(조건식)
+            // {
+            //      실행문;
+            // }
+            int count = 0;
+            while (count < 3)
+            {
+                Console.WriteLine("while 내부");
+                count++;
+            }
+
+
+
+            // do-while 문
+            // do
+            // {
+            //      실행문;
+            // }while(조건식);
+            count = 0;
+            do
+            {
+                Console.WriteLine(count);
+                count++;
+            } while (count != 0);
+            // do while 문은 첫 반복은 무조건 실행한다.
+            // 조건식인 while이 뒤에 있기 때문에
+            */
+
+            // foreach
+            // 배열이나 컬렉션 같은 요소를 여러 개 담은 데이터 구조에
+            // 각 데이터가 들어있는 만큼 반복
+            // 파이썬의 for문과 동일
+            //foreach(항목 in 항목들)
+            //{
+            //    실행문;
+            //}
+
+            /*
+            // 배열 선언시 요소들의 타임에 맞게 자료형을 작성해야한다.
+            // ex) int[] numbers = {1, 2, 3, 4, 5};     // int 형 배열
+            string[] names = { "C#", "python" };        // string[] i = {} : 문자열 배열
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+
+
+            // break, continue 는 파이썬과 동일
+
+
+            // 배열이란
+            // 동일한 데이터 형식을 갖는 데이터의 집합체
+            // 배열을 사용해서 여러 데이터를 모아서 관리 가능
+
+
+            // 컬렉션
+            // collection
+            // c# 에서 컬렉션은 배열, 리스트, 딕셔너리가 있다.
+
+            // new 키워드는 캑체를 새로 생성할 때 쓰는 키워드
+            // 배열
+            var array = new string[] { "AAA", "BBB", "CCC" };
+            foreach(string name in array)       // 요소로 문자열을 가져옴 -> string name in array
+            {
+                Console.WriteLine(name);
+            }
+
+            // 리스트
+            var list = new List<string> { "L1", "L2", "L3" };
+            foreach(string name in list)        // 요소로 문자열을 가져옴
+            {
+                Console.WriteLine(name);
+            }
+
+            // 딕셔너리
+            var diction = new Dictionary<int, string> { { 0, "000" }, { 1, "111" }, { 2, "222" } };
+            foreach(var name in diction)        // 요소로 정수형과 문자열을 가져옴 ->  var 능동적으로 할당하기
+            {
+                Console.WriteLine(name.Key);
+                Console.WriteLine(name.Value);
+            }
+
+
+
+            // 배열
+            // 순서가 있는 집합
+            // 각 요소는 인덱스로 접근
+            // 인덱스는 0부터
+            // * 배열은 데이터 형식이 동일한 요소들을 포함
+            // * 배열 new 키워드로 생성 가능
+            // 배열에서 값 하나는 요소 element 혹은 항목 item 으로 표현
+            // 반복문 foreach 와 조합하여 사용 가능
+            // * 필요한 요소의 수를 미리 정해서 메모리를 적게 사용 사능
+
+
+            string str1 = "c#9.0";
+            Console.WriteLine(str1[0]);
+            Console.WriteLine(str1[1]);
+            Console.WriteLine(str1[2]);
+
+            Console.WriteLine("ABC"[2]);
+
+            // 배열은 데이터 형식 이름 뒤에 [] 기호를 사용하여 선언
+            //타입[] 변수명;
+            int[] numArr;
+            // 배열 선언 후 new연산자(키워드)를 사용하여 배을의 크기만큼 메모리 영역을 잡을 수 있다.
+            numArr = new int[3];    // 앞에 선언한 numArr 변수에 3칸 크기의 정수 배열을 선언
+
+            int[] numArr1 = new int[5];
+            // 데이터 형식[] 변수명 = new 데이터 타임[크기];
+
+            // 1차원 배열
+            int[] intnum = new int[10];
+            // 배열의 요소 : 첨자 하나를 가지는 배열
+            // 메모리 상 10개 공간이 잡힌다.
+            // 0~9 까지 연속적으로 메모리 공간 잡힌다.
+            intnum[0] = 100;
+
+
+            int idx = 1;
+            int[] xxxxx = { 1, 2, 3 };   // new 키워드 없이 배열 선언 및 초기화
+            Console.WriteLine(xxxxx[idx]);
+            Console.WriteLine(xxxxx[idx++]);
+            */
+
+            /*
+            // 문제/*1) 5칸의 정수 배열을 new로 생성하고 각 요소에 1~100사이 임의 숫자 할당
+            //       인덱스를 활용해서 배열에 저장되어 있는 값들의 합과 평균을 소수점 2번째 자리까지 출력
+            int[] numArray = new int[5] { 23, 68, 13, 45, 97 };
+            float sum = 0;
+            foreach (int num in numArray)
+            {
+                sum += num;
+            }
+            Console.WriteLine($"합:{sum},  평균{sum / 5:0.00}");
+
+
+            // 문제2) 5칸 짜리 1차원 정수 배열을 선언하고 사용자에게 5번동안 숫자를 입력 받아
+            //        위 배열에 값을 할당한다
+            //        배열에 저장된 값들의 총 합을 출력한다.
+
+            int sum2 = 0;
+            for (int i = 0; i < numArray.Length; i++)
+            {
+
+                //numArray[i] = int.Parse(Console.ReadLine());
+                numArray[i] = (int) Console.Read();
+                //numArray[i] = Console.Read();     // 값 입력 후 enter 를 치면 \n 까지 값으로 입력 됨 -> 뒤에 나오는 코드 스킵
+                Console.ReadLine();
+                Console.WriteLine(numArray[i]);
+                sum2 += numArray[i];
+            }
+            Console.WriteLine(sum2);
+            */
+
+            /*
+            char[] chararr = new char[5];
+            for (int b=0; b<chararr.Length; b++) 
+            {
+                Console.WriteLine("입력하세요");
+                int inputValue = Console.Read();
+                Console.ReadLine();         // \n 문자 입력 처리용 코드
+                chararr[b] = (char)inputValue;
+            }
+            Console.WriteLine("입력값");
+            foreach(char c in chararr) 
+            {
+                Console.WriteLine(c);
+                Console.WriteLine(c.GetType());
+            }
+            */
+
+
+
+            /*
+            // 다차원 배열
+            // 차원이 여러개
+            // 2차원 3차원 ~~~
+            // 데이터 형식[ , ] 배열이름;        // 2차원 배열
+            // 데이터 형식[ , , ] 배열이름;      // 3차원 배열
+            // arr[0,0]
+
+            int[] arr1;     // 1차원
+            int[,] arr2;    // 2차원
+            int[,,] arr3;   // 3차원
+
+            arr1 = new int[2] { 1, 2 };
+            arr2 = new int[2, 2] { { 1, 2 }, { 3, 4 } };
+            arr3 = new int[2, 2, 2] { { { 1, 2 }, { 3, 4 } }, { { 5, 6 }, { 7, 8 } } };
+
+
+            // 예제) 
+            char[,] arrchar = new char[2, 2];
+            arrchar[0, 0] = 'A';
+            arrchar[0, 1] = 'B';
+            arrchar[1, 0] = 'C';
+            arrchar[1, 1] = 'D';
+
+            Console.WriteLine($"{arrchar[0, 0]}");  // 표데이터 / 데이터 프레임 / 엑셀
+            */
+
+
+            /*        
+            // 문제1) 2차원 배열 선언 및 초기화 문제
+            // 2X3짜리 2차원 배열을 선언하고
+            // 2차원 배열 내부에 임의의 값을 할당
+            // 2차원 배열 내부에 배치된 요소 값을 전부 출력하는데
+            // 행 열 구조의 표 처럼 보이도록 출력
+
+            int[,] arrayInt = new int[2, 3] {
+                { 1, 2, 3 },
+                { 4, 5, 6 }
+            };
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write($"{arrayInt[i,j]}\t");
+                }
+                Console.WriteLine();
+            }
+            */
+            /*
+            // 문제2) string 3차원 배열 2x2x2 를 선언하고 3차원 배열의 모든 요소에 값을 할당
+            // 3차원 3중 for 문 사용해서 요소 모두 출력
+
+            string[,,] arrayStr = new string[2, 2, 2] 
+            {
+                { 
+                    { "a1", "a2" },
+                    { "a3", "a4" } 
+                },
+                { 
+                    { "b1", "b2" },
+                    { "b3", "b4" } 
+                } 
+            };
+
+            for (int i = 0; i < 2; i++)
+            {
+                for(int j = 0; j < 2; j++)
+                {   
+                    //Console.WriteLine($"{i+1,4}층{j+1,4}행");
+                    for(int k = 0; k < 2; k++)
+                    {
+                        Console.Write($"{arrayStr[i, j, k],6}");
+                    }
+                    Console.WriteLine();
+                }
+                    Console.WriteLine();
+            }
+
+            Console.WriteLine("-----------------------");
+
+            string[,,] arrayStr2 = new string[2, 3, 4] {
+                {
+                    { "a1", "a2", "a3", "a4" },
+                    { "a5", "a6", "a7", "a8" },
+                    { "a9", "a10", "a11", "a12" }
+                },
+                {
+                    { "b1", "b2", "b3", "b4" },
+                    { "b5", "b6", "b7", "b8" },
+                    { "b9", "b10", "b11", "b12" }
+                }
+            };
+
+            for (int i = 0; i < arrayStr2.GetLength(0); i++)
+            {
+                for(int j = 0; j < arrayStr2.GetLength(1); j++)
+                {   
+                    //Console.WriteLine($"{i+1,4}층{j+1,4}행");
+                    for(int k = 0; k < arrayStr2.GetLength(2); k++)
+                    {
+                        Console.Write($"{arrayStr2[i, j, k],6}");
+                    }
+                    Console.WriteLine();
+                }
+                    Console.WriteLine();
+            }
+            */
+
+
+
+
+
+            // 가변 배열
+
+
+
+
+        }
     }
 }
