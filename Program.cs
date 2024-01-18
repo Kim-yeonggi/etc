@@ -1,11 +1,83 @@
 ﻿//using System;   // 네임스페이스에 대한 선언부
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using static System.Console;
 using static System.Math;
 
 namespace Helloworld    // 네임스페이스 지정
 {
+    enum Level
+    {
+        High,
+        Normar,
+        Low
+    }
+
+    enum Align
+    {
+        Top,
+        Bottom,
+        Left=4,
+        Right,
+    }
+
     class Program   // 클래스명 지정
     {
+        struct Student
+        {
+            public string name;
+            public int kor;
+            public int eng;
+            public int math;
+        }
+
+        struct Point    // 구조체 이름 선언
+        {
+            public int x;   // 구조체 내부에 선언된 변수
+            public int y;
+        }
+        
+        struct Profile
+        {
+            public string Name;
+            public int Age;
+        }
+
+        // 오버로드 : Main() 함수 바깥에 있어야 가능
+        static void GetNum(int number)
+        {
+            Console.WriteLine(number);
+        }
+        static void GetNum(long number)
+        {
+            Console.WriteLine(number);
+        }
+
+        static int myabs(int x)
+        {   
+            return (x<0 ? -x : x);
+        }
+
+        static int intFunc(int x)
+        {
+            int result = x * 100;
+            return result;
+        }
+
+        static string GetString()   // void : 리턴 X / void 자리에 반환값의 자료형 입력
+        {
+            return "반환값";
+        }
+        
+        static void ShowMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+        static void myfunc()        // 매개변수, 반환 X
+        {
+            Console.WriteLine("함수실행");
+        }
+
         static void Main()  // 함수 선언
         {
             /*
@@ -61,6 +133,7 @@ namespace Helloworld    // 네임스페이스 지정
             // 널 리터럴 : null 리터럴 : 값을 가지지 않는 리터럴
             Console.WriteLine(1234);    // 정수 리터럴
             Console.WriteLine(3.14F);   // 실수 리터럴
+            Console.WriteLine(3.14L);   // long 리터럴
             Console.WriteLine('A');     // 문자 리터럴 ''
             Console.WriteLine("helloooooooooo");    // 문자열 리터럴 ""
 
@@ -431,7 +504,7 @@ namespace Helloworld    // 네임스페이스 지정
             }
             */
 
-
+            /*
             // switch 문
             // 조건문
 
@@ -448,7 +521,7 @@ namespace Helloworld    // 네임스페이스 지정
             //          break;
             // }
 
-            /*
+           
             int user = Console.Read();
             switch (user)
             {
@@ -798,10 +871,330 @@ namespace Helloworld    // 네임스페이스 지정
             */
 
 
-
-
-
+            /*
             // 가변 배열
+            // 차원이 2개 이상인 배열은 다차원 배열
+            // 배열 길이가 가변 길이인 배열은 가변배열
+            // 데이터 형식[][] 배열이름; 형태로 사용
+            // 다차원 배열은 데이터 형식[,] 배열이름;
+
+            int[][] ints = new int[2][];    // [2][]형태로 두번째를 비워둠
+            // 비워둔 자리에 동적으로 동적으로 n개 도기화 가능
+            ints[0] = new int[] { 1, 2 };       // 0번째 행에 데이터 2개 저장
+            ints[1] = new int[] { 3, 4, 5 };    // 1번째 행에 데이터 3개 저장
+
+            // 위 배열의 요소를 이중 for 사용하여 콘솔에 출력
+            for (int i=0; i < 2; i++) 
+            {
+                for (int j=0; j < ints[i].Length; j++)
+                {
+                    Console.WriteLine(ints[i][j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            */
+
+            /*
+            // 함수
+            // 함수 function 혹은 메서드 method 는 재사용을 목적으로 만든
+            // 특정 작업 수행 코드 블럭이다.
+            // C#에서 진입점을 의미하는 함수는?  Main() 함수 -> 특수한 함수
+            // 내장함수 or 사용자 정의 함수
+            // 내장함수는 C#에서 자주 사용하는 기능을 미리 만들어 제공하는 함수
+            // 내장함수는 특정 클래스의 함수로 표현된다.
+            // 위 내장함수들을 API로 표현함
+            // 사용자 정의 함수는 개발자가 만든 함수
+
+            // 사용자 정의 함수의 기본 형태
+            // static void 함수명()
+            // {
+            //      함수 실행문;
+            // }
+
+            // 함수 호출의 형태
+            // 1. 함수이름();  : 단순 호출
+            // 2. 함수이름(매개변수);  : 매개변수 포함한 호출
+            // 3. 변수 = 함수이름(매개변수);  리턴(반환값)이 있는 호출
+
+            myfunc();
+
+            // 매개변수(인자)
+            // 가변 매개변수 (여러개 인자)
+            // C# 에서는 클래스 하나에 매개변수의 형식과 개수를 다르게 하여
+            // 이름과 동일한 함수를 여러 개 만들 수 있다.
+            // : 함수 오버로드    ex) myfunc() / myfunc(a) / myfunc(a,b)
+            // 반환값(return)
+
+            ShowMessage("hello");
+
+            string returnValue = GetString();
+            Console.WriteLine(returnValue);
+
+            int result = intFunc(10);
+            Console.WriteLine(result);
+
+
+            // static void : 반환값 없음
+            // static int : 정수형 반환
+            // static string : 문자열 반환
+            
+
+
+            // 문제) 하나의 숫자를 매개변수를 통해 입력받아서
+            // 해당 숫자가 음수 혹은 양수로 들어와도 절대값으로 리턴해주는 함수 생성
+            // 함수의 이름은 myabs로 생성
+
+            Console.WriteLine(myabs(-8));
+            */
+
+
+            /*
+            // 매개변수 
+            // 함수 내 선언되는 변수
+            // 기본 매개변수 default
+            // 선택적 매개변수 optional
+            // 명명된 매개변수 named
+            static void xxx(int x)
+            {
+                Console.WriteLine(x);
+            }
+
+            static void mysum(int first, int second)
+            {
+                Console.WriteLine(first + second);
+            }
+
+            mysum(100, 200);
+            mysum(second: 100, first: 500);
+
+
+            GetNum(1234);       // int 매개변수 GetNum 함수 호출
+            GetNum(1234L);      // long 매개변수 GetNum 함수 호출
+
+
+            // 함수의 범위
+            // 클래스와 같은 레벨에 선언된 변수를 전역변수 혹은 필드라고 함
+            // 함수 레벨에서 성너된 변수를 지역변수라고 함
+            // 동일한 이름으로 변수를 전역변수와 함수 내의 지역변수로 선언 가능
+            // 함수 내에서는 함수 범위에 있는 지역 변수를 사용한다.
+            // 함수 범위 내에 선언된 변수가 없으면 전역변수 내에 선언된 변수를 사용한다.
+            // C# 에서는 전역변수라는 표현 보다는 필드라느 표현을 주로 씀
+            // 전역변수(필드)에는 언더스코어를 붙여 변수명을 작성하는 경우가 많음_result 형태
+
+
+
+            // 화살표 함수 : =>
+            // 화살표 모양의 연산자를 작성하여 메서드 코드를 줄일 수 있다.
+            // 화살표 함수 arrow function
+            // 람다식과 비슷한 개념
+            static void Hi() => Console.WriteLine("hi");
+            static void Multiplex(int a, int b) => Console.WriteLine(a * b);
+            Hi();
+            Multiplex(15, 8);
+            // {}를 생략하고 => 로 작성
+            */
+
+
+            /*
+            // 클래스, 구조체, 열거형, 네임스페이스
+            // 닷넷에서 제공하는 대부분의 API는 클래스 형태
+            // 클래스 : Console 클래스, String 클래스 등 대부분 클래스 구조임
+            // 구조체 : DateTime 구조체, TimeSpan 구조체 형태로 표현, 클래스와 거의 동일하게 사용
+            // 열거형 : Color 열거형 등, 특정 목록을 관리하기에 편리함
+            // 네임스페이스 : System 네임스페이스처럼 여러 클래스, 구조체, 열거형을 포함한 단위
+            // * API : Application Program Interface
+
+
+
+            // Math 를래스
+            // 닷넷에서 제공하는 수학 관련 내장 클래스 math
+            // Math.PI          원주율
+            // Math.Abs()       절대값
+            // Math.Max()       최대값
+            // Math.Min()       최소값
+            // Math.Pow()       거듭제곱
+            // Math.Floor()     지정된 10진수보다 작거나 같은 최대 정수값 반환
+            // Math.Ceiling()   지정된 10진수보다 크거나 같은 정수값 반환
+            // Math.Round()     특정 자리에서 반올림
+            
+            Console.WriteLine($"3.15를 소수점 둘째자리에서 반올림: {Math.Round(3.15, 1)}");
+            // 3.14 를 소수점 첫번째 자리까지만 표현 == 소수점 두번째 자리에서 반올림 
+
+
+
+
+
+            // 구조체 struct   ==  python : list
+            // 하나의 이름으로 서로 다른 데이터 형식을 묶어 관리하는 구조체
+            // 변수: 이름 하나, 공간 하나
+            // 배열: 이름 하나, 데이터 형식 동일 공간 여러개 int[] xx = { 1, 2, 3 }
+            // int, string 등 서로 다른 자료를 한 집단으로 정의 : 구조체
+            // c# 에서는 구조체를 확장한 클래스 개념을 제공한다.
+            // 클래스가 더 상위 개념이고 주로 사용하기에
+            // 구조체는 이미 내장되어 있는 datetime 구조체 등을 불러서 사용할 때 많이 사용한다.
+            // 따로 만드는 경우는 별로 없음. 대신에 클래스로 만듦
+
+
+
+            // 구조체의 선언
+            // struct 구조체이름
+            // {
+            //      데이터 형식 변수1;
+            //      데이터 형식 변수2;
+            // }
+
+            Point xxxx;        // 구조체 생성
+            xxxx.x = 100;      // point 구조체 내부 변수 x 에 100대입
+            xxxx.y = 200;
+            WriteLine(xxxx.x);  // 구조체 내부 변수 출력
+
+
+            // 구조체 : int or string 등 데이터 타입을 만든 것
+            // 구조체 배열
+            // 구조체[] 배열이름 = new 구조체[100];   
+
+
+            static void Print(string name, int age) => WriteLine($"name: {name}  age: {age}");
+
+            Profile profile;
+            profile.Name = "홍길동";
+            profile.Age = 20;
+            Print(profile.Name, profile.Age);
+
+            Profile[] names = new Profile[2];
+            names[0].Name = "1번 이름";
+            names[0].Age = 100;
+            names[1].Name = "2번 이름";
+            names[1].Age = 200;
+
+            for (int i=0; i<names.Length; i++)
+            {
+                Print(names[i].Name, names[i].Age);
+            }
+            */
+
+            /*
+            // 학생이라는 구조체를 만들고
+            // 학생 구조체는 학생의 이름/국어/영어/수학 점수가 있다.
+            // 학생은 총 10명, 10명의 정보를 하나의 students 라는 배열에 배치한다.
+            // 모든 학생의 점수 정보는 임의로 코드상 기재한다.
+
+            // printAvg 라는 함수를 선언하고
+            // printAvg 함수는 학생 10명의 정보를 담은 하나의 배열을 전달 받는다.
+            // printAvg 함수의 반환값 : 문자열 형태이고 평균점수가 가장 높은 학생의 이름을 return
+
+
+            Random rand = new Random();
+            Student[] students = new Student[5];
+            for (int i =0; i<students.Length; i++)
+            {
+                students[i].name = $"{i+1}번학생";
+                students[i].kor = rand.Next(0, 101);
+                students[i].eng = rand.Next(0, 101);
+                students[i].math = rand.Next(0, 101);
+            }
+
+            static string printAvg(Student[] array)     // 배열 매개변수 : static string 함수명( 참조배열이름[] 매개변수)   [] 대괄호 넣어야함
+            {
+                float avg = 0;
+                string person = "";
+                for (int i = 0; i < array.Length; i++)
+                {
+                    int sum = array[i].kor + array[i].eng + array[i].math;
+                    Console.WriteLine($"이름:{array[i].name,5}    합:{sum,4}   평균:{sum / 3F,6:0.00}");
+                    if (avg <= sum / 3)
+                    {
+                        avg = sum / 3F;
+                        person = array[i].name;
+                    }
+                }
+                return $"{person}, {avg:0.00}";
+            }
+
+            Console.WriteLine(printAvg(students));
+            */
+
+
+            /*
+            // 내장형 구조체
+            // DateTime : 시간/날짜 간격에 대한 정보를 제공
+            // Timespan : 시간/날짜 계산 정보 제공
+            // Char : 문자 관련 정보 제공
+
+            WriteLine(DateTime.Now);
+            WriteLine(DateTime.Now.ToString());
+            WriteLine(DateTime.Now.Year.ToString());
+            WriteLine(DateTime.Now.Hour.ToString());
+            WriteLine(DateTime.Now.Minute.ToString());
+
+
+            // ms 까지 표현 가능
+
+            TimeSpan Dday = Convert.ToDateTime("2025-12-12") - DateTime.Now;
+            WriteLine(Dday.ToString());
+
+            // 조건식이 참이라면 out 뒤에 나오는 변수를 반환한다.
+            if (DateTime.TryParse("2024/12/12", out DateTime d))        // 인라인 out 변수 : 변수가 선언되고 바로 사용할 수 있게 됨
+            {
+                Console.WriteLine(d.ToString());
+            }
+
+
+
+
+            // DateTime 구조체의 AddHours() 메서드
+            // 보통의 1년 : 365일 : 8760시간
+            // 1년을 시간 단위로 8760단계로 표현 가능
+
+
+            static DateTime myGetTime(int num)
+            {
+                return new DateTime(2024,1,20,0,0,0).AddHours(--num);
+            }
+            Console.WriteLine(myGetTime(1));
+            Console.WriteLine(myGetTime(8760));
+            */
+
+
+            // 열거형 enum
+            // 타입 이름 하나로 서로 관련 있는 항목들을 묶어 관리하는 열거형 타입
+            // 열거형 타입은 기억하기 어려운 상수들을 이름을 지어 관리/표현하는 방식
+            // 열거형을 사용하면 값 리스트 여러개를 이름 하나로 관리할 수 있다.
+            // 열거형은 enum 키워드를 사용
+
+            // ConsoleColor 열거형
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Blue");
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Red");
+            Console.ResetColor();
+
+
+            Level x = Level.High;
+            Console.WriteLine(x);
+
+
+            Console.WriteLine(Align.Left);              // Left
+            Console.WriteLine((int) Align.Left);        // 4
+
+            Console.WriteLine((int)Align.Bottom);       //  1       // 전 값 + 1 출력 (비어있으면 0+1)
+
+            Console.WriteLine("-------------------------");
+            Type cc = typeof(ConsoleColor);
+            Console.WriteLine(cc);
+            string[] colors = Enum.GetNames(cc);    // GetNames : 지정된 열거형에서 상수 이름 배열 리턴
+            foreach (string color in colors)
+            {
+                Console.WriteLine(color);
+            }
+
+
+
+
+
 
 
 
