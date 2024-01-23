@@ -18,25 +18,70 @@
 # 2차원 배열 형태로 맵 표기
 
 
-class ai(mng):
-    def bomb(self):
-        pass
+import random
+class ai:
+    x = 13
+    y = 13
+    next_x = 0
+    next_y = 0
+    fw = random.random()
+    def __init__(self, now_loc_x, now_loc_y, p):        # 후에 입력받을 값으로 대체
+        self.now_loc_x = now_loc_x
+        self.now_loc_y = now_loc_y
+        self.p = p
+
+    # 위치 저장
+    def save_location(self):         # 현재 ai 좌표() 리턴 받기 map[x][y]
+        if self.x != self.now_loc_x or self.y != self.now_loc_y:    # 이동을 했다면
+            self.x = self.now_loc_x         # 현재 좌표 갱신
+            self.y = self.now_loc_y
+            return self.now_loc_x, self.now_loc_x
+
+    # 이동
     def move(self):
-        1. 방향 정하기 : 상하좌우에 폭탄이 있는지 / 아이템이 있는지
-        if 폭탄 있음:
-                        
-        2. user 입력하면(1틱 지나면) 해당 방향으로 한 칸 이동
-        if 이동이 안되면:
-            if 박스면:
-                폭탄 설치(bomb)
-            방향전환
-            이동
-        pass
+        try:
+            if self.p:
+                if self.fw < 0.25:
+                    self.next_x = self.x - 1
+                elif self.fw < 0.5:
+                    self.next_y -= 1
+                elif self.fw < 0.75:
+                    self.next_x += 1
+                else:
+                    self.next_y += 1
+                print(self.next_x, self.next_y)
+            else:
+                pass
+            return
+        except:
+            pass
+        finally:
+            pass
+
+'''
+    # 주위에 폭탄이나 아이템이 있을 경우 이동
+    def bomb_item(self):
+        try:
+            if map[self.x][self.y] == 10:   # 현재 ai 좌표에 폭탄이 있을 경우
+                if map[self.x][self.y+1] == 10:
+                    pass
+                elif map[self.x][self.y-1] == 10:
+                    pass
+                elif 상하가 폭탄 범위일 경우:
+                폭탄 반대 방향으로 이동
+            elif map[self.x+1] in "56789" or map[self.x-1] in "56789" or map[self.y+1] in "56789" or map[self.y-1] in "56789":
+                아이템 방향으로 이동
+            else:
+                self.move()
+        except:
+            pass
+
+'''
+
+
+    # def total(self):
 
 
 
 
-
-
-
-
+ai(13, 13,True)
