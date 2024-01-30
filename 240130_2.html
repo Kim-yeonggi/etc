@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<titel>
+</title>
+<link href="css/sample.css" type='text/css' rel='stylesheet'> <!-- text/css : text 기반 css 파일-->
+<head>
+<body>
+
+<pre>
+CSS: cascading style sheet는 HTML 문서에 색, 모양, 출력 위치 등 외관을 꾸미는 기능의 스타일 시트 언어
+CSS로 작성된 코드를 스타일 시트라고 함.
+
+CSS를 이용해서 색상 / 배경 / 텍스트 / 폰트 / 박스모델 / 리스트 등을 수정 가능
+
+# CSS 스타일 시트의 구성
+CSS 스타일 시트 코드는 선택자{속성명:속성값;} 형태로 구성
+CSS 스타일 시트 내에서 주석 처리는 /* ~~ */ 사용
+CSS 스타일 시트 내 셀렉터 / 프로퍼티 / 값 은 대소문자 구분 X
+CSS는 약 200개 정도의 프로퍼티가 존재함
+CSS 작성 시 여러 속성 적용하려면 ; 으로 속성 쌍 구분
+
+
+# CSS 스타일 시트를 작성하는 위치
+1. head 태그 내부에 style 태그를 작성하여 그 안에 CSS 코드 작성
+2. 태그에 style 속성을 지정하고 직접 css 코드 작성
+3. 스타일 시트를 .css 외부 파일로 작성하여 연결
+
+# 셀렉터(선택자)와 태그
+셀렉터는 CSS 스타일 시트의 이름이나 규칙
+스타일을 지정하려는 대상을 지목하는 방법
+
+# style 태그의 특징
+style 태그는 여러 세트 생성 가능
+style 태그에 작성된 스타일 시트는 웹 페이지 전체에 적용됨
+
+# CSS3 규칙
+CSS3 스타일 시트에는 규칙이 있음
+1. CSS3 스타일은 부모 태그로부터 상속 된다.
+자신을 둘러싸는 태그를 부모태그 혹은 부모요소라고 함
+부모 요소에 적용된 스타일 시트는 자식에게도 적용됨
+
+2. 스타일 합치기와 오버라이딩
+브라우저는 각 태그에 대한 디폴트 스타일 시트를 가지고 있음
+개발자가 지정한 스타일이 없으면 디폴트가 적용된다.
+따라서, 특정 태그에는 아래 4가지 상황에 따라 스타일이 적용
+1) 브라우저의 디폴트 스타일
+2) .css 외부 스타일 시트 파일
+3) style 태그 내에 작성된 스타일 시트 코드
+4) 태그에 직접 작성된 스타일 시트 코드
+* 우선순위 1 -> 2-> 3-> 4 : 브라우저 시트가 가장 우선 순위 약함
+
+오버라이딩은 덮어쓰기로 동일한 우선순위에 있는 CSS 시트 중 나중에 적용된 스타일이 적용된다.
+나중에 적용된 스타일이 최종 적용됨
+
+
+# id와 class 속성의 공통, 차이
+공통점 : 특정 태그(요소)에 식별자를 주는 방식
+차이점 : id는 문서에서 특정 하나의 요소에만 유일하게 부여해야함
+          class는 여러 요소에 중복으로 적용 가능
+
+# 셀렉터(선택자)의 종류
+1. 태그명 셀렉터 : 태그명으로 셀렉터 지정
+2. id 셀렉터 : #아이디로 셀렉터 지정
+3. class 셀렉터 : .클래스명으로 셀렉터 지정
+4. 조합된 셀렉터 : 2개 이상으 ㅣ셀렉터를 조합하여 태그를 구체적으로 지정 가능
+	4.1 : 자식 셀렉터 : child selector : 기호  >  사용	ex) div > span
+	4.2 : 자손 셀렉터 : descendent selector : 공백 사용	ex) div span
+5. 전체 셀렉터 : * 모든 요소 선택
+6. 속성 셀렉터 : input 태그에 지정된 type 속성에 따라 구분하는 셀렉터
+7. 가상 셀렉터 : 
+
+
+</pre>
+<div>
+<h3>CSS style</h3>
+<hr>
+<p>미래<span>융합</span>교육원 301</p>
+<div>
+
+<h2>테스트 텍스트</h2>
+<p>
+스타일 프로퍼티 적용 테스트를 위한 문장
+</p>
+
+<p style='color: green;'>p태그<em style="font-size: 200px">문장</em></p>
+
+<a href='https://naver.com'  class='link1'>네이버 링크<a>
+<a href='https://google.com' class='link1' id='linkid'>구글 링크<a>
+<a href='https://mcea.co.kr' id='id1'>학원 링크<a>
+
+<a href='https://naver.com' class='link2'>네이버 링크<a>
+<a href='https://google.com' class='link2'>구글 링크<a>
+<a href='https://mcea.co.kr' id='id2'>학원 링크<a>
+
+
+<div>
+	<div>div<span>속</span>div</div>
+	<ul>
+		<li>html</li>
+		<li><span>css</span></li>
+		<li id="s">js</li>
+	</ul>
+	<span>33333</span>
+</div>
+
+<input type='text'>
+<input type='password'>
+<input type='file'>
+
+
+
+
+
+
+
+
+
+<style>
+	/* class 보다 id 의 우선순위가 더 앞섬*/
+	#linkid {background: red;}
+	.link1 {background: lightblue;}
+	.link2 {background: lightgreen;}
+	#id1 {background: yellow;}
+	#id2 {background: #f92;}
+
+	div > span { background: yellow; }
+	ul span { color: blue; }
+	ul > #s { background: green; }
+
+	input[type='text']{color: red;}
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+</body>
+</html>

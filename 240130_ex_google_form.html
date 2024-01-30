@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			HTML 시멘틱 구조 구성
+		</title>
+		<style>
+			html, body{ margin: 0; padding: 0; height: 100%; }
+			header { width: 75%; height: 15%; float: left; }
+			nav { width: 75%; height: 20%; float: left; }
+			section { width: 75%; height: 65%; float: left; }
+			aside { width: 25%; height: 100%; float: left; }
+			
+			.margin1 { margin-top: 35px; margin-left: 15%; }
+			.margin2 { margin: 20px 40px 20px 40px }
+			h1 { font-size: 50px; font-weight: normal; }
+			.radio { margin-bottom: 20px; margin-left: 10px;}
+
+			#id1 { width:100%; height: 30px; 
+			border: 0px; border-bottom: 2px solid lightgrey; 
+			font-size: 20px; color: grey; }
+			
+			div > select { width:100%; height: 30px; 
+			border: 0px; border-bottom: 2px solid lightgrey; 
+			font-size: 20px; }
+
+			.margin2 > p {margin: 50px 0px 20px 0px}
+		</style>
+
+		<script>
+		
+		</script>
+	</head>
+	<body>
+		<aside>
+			<img src="data:image/png;base64,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" width="80%" class="margin1" >
+		</aside>
+		<header>
+			<h1 class="margin2">시작하기</h1>
+		</header>
+		<nav>
+			<p class="margin2">비지니스 이메일, 화상회의, 온라인 스토리지, 기타 비지니스 도구에 엑세스 할 수 있게 됩니다.
+			<b>14일 무료 체험판은 소프트웨어 다운로드를 필요로 하지 않습니다.</b></p>
+		</nav>
+
+		<section>
+			<div class="margin2">
+				<input type="text" value="업체이름"  id="id1">
+			</div>
+			<div class="margin2">
+				<p>직원</p>
+				<input type="radio" name='ep' class="radio">1명<br>
+				<input type="radio" name='ep' class="radio">2~9명<br>
+				<input type="radio" name='ep' class="radio">10~99명<br>
+				<input type="radio" name='ep' class="radio">100~299명<br>
+				<input type="radio" name='ep' class="radio">300명 이상<br>
+			</div>
+			<div class="margin2">
+				<p>국가</p>
+				<select name="">
+					<option value='nation' selected>대한민국</option>
+					<option value='nation' >미국</option>
+					<option value='nation' >중국</option>
+					<option value='nation' >일본</option>
+				</select>
+			</div>
+		</section>		
+	</body>
+</html>
