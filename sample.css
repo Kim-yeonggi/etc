@@ -1,0 +1,6 @@
+
+/* 우선순위 : 대상 태그에 직접 > style 태그 내부 (나중) > style 태그 내부 (이전) */
+body { background-color: linen; color: blue; margin-left: 30px; margin-right: 300px; }
+h3 { text-align: center; color: blue; }
+
+body { color : grey; }
