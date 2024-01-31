@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+240131
+</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+
+<style>
+* {font-family: 'Gothic A1', sans-serif;}
+</style>
+
+</head>
+<body>
+<pre>
+# 색을 표현하는 css 속성
+CSS에서 색은 RGB / RGBA / HSL 등으로 표현한다. 대부분 RGB체계 사용
+1. RGB를 표현하는 방법 16진수
+	RGB에 해당하는 값을 16진수로 변환하여 표기 #FFFFFF 형태
+2. 10진수로 RGB를 표현하는 방법
+	rgb(255, 255, 255) 형태
+3. 색의 이름으로 표현하는 방법
+	red / blue / green 등의 색상 코드 명
+	CSS 표준에서는 140개 정도 색 이름을 정의 해 둠
+
+# 색 관련 프로퍼티
+CSS에서는 색을 사용하는 여러 프로퍼티 존재
+1. color 프로퍼티 : 텍스트 색상
+2. background-color 프로퍼티 : 배경 색상
+3. border-color 프로퍼티 : 테두리 색상
+
+
+
+# 텍스트 관련 속성
+CSS로 문단 들여쓰기나 문단 정렬 등 텍스트의 출력 모양을 제어 할 수 있다.
+1. text-indent : 들여쓰기
+	보통 em 단위 사용 : 기준이 되는 픽셀 (브라우저 기본 16px 이라는 가정) 1em : 16px
+2. text-align : 글자 정렬
+	left : 왼쪽 정렬
+	right : 오른쪽 정렬
+	center : 중앙 정렬
+	justify : 양쪽 정렬
+	start : 시작 정렬
+	end : 끝 정렬
+	inherit : 상위 요소에게 상속
+	initial : 초기화
+	
+3. text-decoration : 텍스트 꾸미기
+	underline
+	line-through
+	overline
+	none : 링크에 줄 삭제 가능
+
+
+
+
+
+# CSS의 표준 단위
+em : 배수 / 현재 폰트의 몇 배 / 적용 대상의 직계 부모를 기준
+rem : 배수 / 현재 폰트의 몇배 / 적용 대상 부모 기준이 아니라 DOM tree 최상단 요소 기준
+% : 퍼센트 / 현재 폰트의 몇 퍼센트
+px : 절대수치 픽셀 / 기본 설정
+deg : 각도 / 애니메이션 코드에 적용
+
+
+
+
+# 폰트 적용
+폰트는 글자체로 W3C는 폰트를 지정하기 위해 font 프로퍼티를 사용한다.
+times new roman, arial, verdana 등 여러 폰트를 font 프로퍼티의 값으로 지정하여 폰트 설정 가능
+하지만, 대부분 실제 폰트 적용시에는 웹폰트라는 것을 사용하는 경우가 많음. ex) 구글 웹 폰트
+
+
+
+
+# font-size 속성
+# font-family 속성
+#font-style 속성
+#font-weight 속성
+
+# 박스 모델
+CSS에서 박스모델 box model 이란 각 html 태그 요소를 하나의 박스로 보고, 박스의 크기, 박스의 배경색, 
+박스의 여백, 박스의 테두리 등 HTML 태그를 박스로 다루는 체계를 의미.
+박스 모델을 통해 HTML 모든 요소의 시각적 출력 형태를 확인 할 수 있다.
+
+# 박스모델 내부 구성 요소
+박스모델은 패딩 / 보더 / 마진/ 컨텐츠 영역으로 나뉜다.
+1. 컨텐츠 : HTML 태그 내부에 작성된 텍스트나 이미지 등 본문내용
+2. 패딩 : 컨텐츠를 둘러싸고 있는 내부 여백
+3. 보더 : 테두리 패딩 외부의 외곽선으로 직선 or 점선 등으로 작성 (화면 확대/축소 비율에 따라 조금씩 변동)
+4. 마진 : 박스의 가장 바깥 영역, 테두리 바깐 공간으로 인접 요소와의 거리이다
+
+# 박스를 제어하는 프로퍼티
+width / height / margin / padding / border 속성
+
+1. 크기 조절
+width : 컨텐츠 영역의 너비
+height : 컨텐츠 영역의 높이
+
+2. 패딩
+padding-top
+padding-bottom
+padding-right
+padding-left
+padding
+
+3. 테두리
+border-top
+border-bottom
+border-right
+border-left
+
+3-1. 테두리 두께
+border-width
+
+3-2. 테두리 스타일
+border-style
+border-top-style
+bottom/right/left
+
+3-3. 테두리 색상
+border-color
+border-top-color
+bottom/right/left
+
+4. 여백 : 투명함 -> 부모 태그의 색이 보인다.
+margin
+margin-left
+bottom/right/left
+
+# 박스의 색
+패딩은 색상이 따로 없으며 태그의 배경색(background)이 패딩에 그대로 적용
+여백의 색도 강제로 줄 수 없음.
+여백은 투명하게 처리되어 부모 태그의 배경색이 비춰보임
+테두리 색은 개발자가 임의로 지정 가능.
+
+
+# 테두리의 두께와 모양과 색
+테두리는 패딩이나 여백과 다르게 두께(width) 모양(style) 색(color)를 개별적으로 지정 가능
+border-style / border-width / border-color 속성 활용
+border-width 의 경우 지정한 값이 여러 요소에 의해 다르게 나타날 수 있다.
+
+# 실제 지정한 테두리의 두께가 다르게 나타나는 이유
+1. 브라우저의 확대 축소
+2. 디스플레이의 특성, 해상도
+3. 브라우저마다의 CSS 해석 방식 차이
+4. 개발자 도구에서 나타나는 값의 부정확성
+외 여러 요소에 의해 테두리 두께가 다르게 보일 수 있음
+정확한 PX에 의한 두께 지정은 의미가 없고, 비율 및 주변 인접 요소와의 배치에 신경 쓸 것
+
+# 테두리 두께를 지정하는 방법
+테두리 두께 속성인 border-width에 3px, 10px 등의 절대값을 대입할 수 있고, thick, medium, thin 등
+속성값으로 부여할 수 있음.
+
+# 테두리 스타일에 지정 가능한 값
+border-style 테두리 스타일에 지정 가능한 스타일은
+solid(실선) / none(없음) / dotted(점) / dashed(점선) 등 값을 지정 가능
+none으로 지정하는 경우 테두리의 두께는 0으로 표기됨
+
+# 테두리의 모서리 속성
+border-radius 속성을 이용해서 테두리의 모서리에 기울기를 줄 수 있음.
+ex) border-radius: 50px 으로 지어하면 테두리의 모서리를 반지름 50px 기준으로 깎아 원으로 만듦
+
+
+
+
+# 배경 관련 속성
+HTML의 배경을 꾸미는 방법을 크게 두가지로 나누면, 색상 적용 / 이미지 적용으로 나뉨
+보통 웹 페이지들의 배경에 단일 색상을 적용하는 경우보다는 이미지를 적용하는 경우가 많음
+색상은 특정 영역에 일부적용하는 경우에 사용
+
+# 배경 색상 지정
+background-color
+
+# 배경 이미지 지정
+background-image
+
+# 배경 이미지의 위치 지정
+background-position
+이 프로퍼티는 박스 내 배경 이미지의 시작위치를 지정한다.
+left top(디폴트) / left center / left bottom / right top / right center / ...  모든 방향에 속성 존재
+background-position: left center;
+
+# 배경 이미지의 크기
+background-size 속성
+배경 이미지의 실제 크기 상관없이 출력되는 크기를 지정
+background-size: 100px 100px
+
+# 배경 이미지의 반복 속성
+background-repeat 속성
+배경 이미지를 반복 출력하는 방식을 지정한다.
+no-repeat : 반복 X
+repeat : 반복 O (기본 값)
+repeat-x : x축 수평 반복
+repeat-y : y축 수직 반복
+
+
+
+
+# CSS 에서 제공하는 시각적 효과
+이미지의 직접 첨부는 웹 페이지 로드과정에서 이미지 리소스에 대한 불러오기 작업이 수행된다. 따라서 
+사용되는 리소스가 많아지는 경우 페이지의 로딩 속도에 지연이 행겨 부가적인 여러 문제가 발생할 수 있다.
+ex) 자바스크립트 코드를 불러오지 못하는 문제 등
+
+간단한 효과나 애니메이션은 gif 를 활용하거나 부가적을 ㅗ만들어진 이미지를 사용하는 것 보다는
+자체적으로 CSS에서 제공하는 기능을 사용해서 구현하는 것이 페이지의 로딩 시간 및 구동 시간에 유리하다
+
+# CSS3가 제공하는 텍스트 효과
+1. 텍스트 그림자
+text-shadow 프로퍼티를 이용해서 텍스트에 그림자를 줄 수 있음
+1) h-shadow : 원본 텍스트와 그림자 사이의 수평 / 수직 거리 (필수)
+2) v-shadow (필수)
+3) blur-radius : 그림자를 흐릿하게 만드는 효과, 번지는 길이 설정 (선택)
+4) color : 그림자의 색상 (필수)
+
+
+
+2. 박스 그림자
+box-shadow 프로퍼티를 이용하면 박스 영역 전체에 그림자를 줄 수 있다.
+박스 쉐도우에 지정해야 하는 값은 텍스트 쉐도우와 동일하되 추가되는 속성값이 존재
+h-shadow
+v-shadow
+blur-radius
+color
+spread-radius : 그림자의 크기 (선택 적용, 디폴트는 0)
+inset : 음각 박스로 보이게 하는 박스 상단 안쪽에 그림자 형성
+
+
+
+# 마우스 커서 속성
+cursor 프로퍼티를 사용하면 HTML 요소 위에 출력되는 마우스 커서의 모양을 변경 가능
+cursor 속성에 대입 가능한 값은 아래와 같다.
+auto 디폴트 커서
+pointer 손가락 모양
+move 이동 표시
+progress 손 + 로딩 표시
+wait 로딩 표시
+zoom-in 줌인 표시
+zoom-out 줌아웃 표시
+crosshair 십자가 조준선
+
+
+
+# 배치 속성
+기존 웹 페이지에 작성된 태그는 작성 순서대로 배치가 되는 것이 스태틱 배치
+CSS3 속성을 이용해서 HTML 태그를 브라우저의 특정 위치에 고정하거나, 스크롤 바를 움직여도 가만히 있게 하거나,
+보이지 않게 하거나 등 HTML 태그가 출력되는 상태나 위치를 변경하는 것을 포지셔닝(배치) 라고 한다.
+
+
+# 블록박스 / 인라인 박스
+블록 박스 div p ul ol header nav
+인라인 태그 span a img
+기본적으로 브라우저는 블록 태그는 블록 박스로 표현, 인라인 태그는 인라인 박스로 표현한다.
+블록 박스는 좌측 끝 부터 우측 끝, 인라인은 본인의 컨텐츠 만큼만
+
+블록은 새로운 라인에서 시작한다. 옆에 다른 태그가 배치되지 않는다.
+
+
+# display 속성
+display 속성은 디폴트 박스 유형을 무시하고 HTML 태그의 박스 유형을 변경할 수 있다.
+CSS에서 display의 유형 3가지
+1. block
+2. inline
+3. inline-block
+
+
+block의 특징
+1. 항상 새 라인에서 시작한다.
+2. 블록 박스 내에만 배치
+3. 옆에 다른 요소 배치 불가능
+4. width, height 속성으로 크기 조절 가능
+5. padding / margin / border 설정 가능
+
+
+inline의 특징
+1. 새 라인에서 시작하지 않는다.
+2. 모든 박스 내에 배치 가능
+3. 옆에 다른 요소 배치 가능
+4. width, height 크기 조절 불가능 (컨텐츠 만큼 공간 할당)
+5. margin-top / margin-bottom 조절 불가능
+
+
+inline-block 특징
+1. 새 라인에서 시작 X
+2. 모든 박스 내에 배치 가능
+3. 옆에 다른 요소 배치 가능
+4. width height 가능
+5. padding / margin / border 가능
+
+
+
+#display:block
+inline이나 inline-block을 block으로 바꾸는 속성
+
+
+
+</pre>
+<!--
+<div id='textbox'>박스모델</div>
+
+<div class='red'>shadow</div>
+<div class='blur'>shadow</div>
+
+
+<div class='b1'>박스 그림자1</div>
+<div class='b2'>박스 그림자2</div>
+<div class='b3'>박스 그림자3</div>
+-->
+
+<span id="ss">inline 요소임</span>
+<div style="background: orange;">
+	<div>inline div</div>
+	<div>inline div</div>
+	<div>inline div</div>
+	<div id="d1">inline div</div>
+	<div>inline div</div>
+	<div>inline div</div>
+	<div>inline div</div>
+	<div>inline div</div>
+	<div>inline div</div>
+</div>
+
+
+<style>
+/*
+.red { text-shadow: 3px 3px red }
+.blur { text-shadow: 3px 3px 5px red }
+
+div { width: 150px; height: 100px; margin: 20px; padding: 10px; border: 10px solid grey;}
+.b1 { box-shadow: 10px 10px red }
+.b2 { box-shadow: 10px 10px 5px blue }
+.b3 { box-shadow: 3px 3px 3px black,
+	0 0 25px blue,
+	0 0 5px red}
+
+.red:hover { cursor: auto; }
+.red:active { cursor: zoom-in; }
+.blur:hover { cursor: pointer; }
+.blur:active { cursor: zoom-out; }
+
+.b1:hover { cursor: move; }
+.b2:hover { cursor: progress; }
+.b2:active { cursor: wait; }
+.b3:hover { cursor: crosshair;}
+
+
+#textbox {
+	width: 150px; height: 150px;
+	margin: 200px; padding: 15px; 
+	border: 10px dashed black; border-radius: 0px 0px 100px 100px;
+	border-left: 0px; border-right: 0px;
+	}
+body { 	
+	background-image: url('https://i.crepe.land/https://crepe.land/portfolio/m/m7/m7j6jbr8q4a0fico0zhxnqpwjxeqzb1u_%EB%B0%94%EB%8B%A42%28%EC%84%B8%EB%A1%9C%ED%98%95%29.png?q=100&t=i&v=3a&w=800');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	}
+*/
+
+
+
+
+#ss { display: block; width: 150px; height: 100px; background: red; }
+div div {display: inline-block; width: 100px; height: 50px; margin: 100px;}
+#d1 {width: 200px; height: 200px; }
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+<!--
+<h3>텍스트 속성</h3>
+<hr>
+<p class='p1'>111111111111<span>111111</span>11111111111111111111111</p>
+<p class='p2'>222222222<strong>22222</strong>222222222222222222222
+</p>
+<a href='https://naver.com' style='text-decoration:none';>링크 밑줄 삭제</a>
+
+<style>
+h3{text-align: right}
+span { text-decoration: line-through }
+strong { text-decoration: overline }
+.p1 { text-indent: 3em; text-align: justify }
+.p2 { text-indent: 1em; text-align: center }
+</style>
+-->
+
+</body>
+
+</html>
