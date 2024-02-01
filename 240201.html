@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>240201</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+<pre>
+
+# 박스의 속성 설정 display : block / inline / inline-block
+
+# 박스의 배치 설정 position
+
+개발자가 작성한 순서대로 위에서 아래로 나타나는 기본 배치를 normal flow 라고 함. 이런 기본 흐름을 무시하고
+position 속성을 이용해서 원하는 위치에 박스를 배치할 수 있다.
+
+position 속성에 지정 가능한 값
+position: static
+position: relative
+position: absolute
+position: fixed
+
+position 속성 외에 float 속성을 통한 배치도 가능
+float: left
+float: right
+
+
+position 속성을 사용할 때, HTML 태그의 위치는 다음 프로퍼티로 조절한다.
+top / bottom / left / right
+
+
+# static : 정적 배치 (디폴트)
+정적 배치는 웹 페이지가 작성된 태그 순서대로 html 태그의 출력 위치를 정하는 방식으로, 브라우저의 디폴트 배치 방식이다.
+따라서 static의 경우에는 left / top / bottom / right 가 적용되지 않는다.
+
+# relative : 상대 배치
+normal flow에 따라 HTML 태그가 출력되는 위치를 기준으로 left / top / bottom / right 값을 주면 기준 위치에서
+주어진 값만큼 이동한다.
+
+# absolute : 절대 배치
+position absolute 절대 배치를 사용하면 HTML 태그를 절대 위치에 배치할 수 있다.
+left / top 등 속성으로 옮기고자 하는 대상에게 absolute 를 적용하고 좌표 기준으로 설정하고자 하는 부모 컨테이너에게도
+static이 아닌 position 속성을 지정해야함
+부모 태그 안에서의 상대좌표
+
+
+# fixed : 고정 배치
+브라우저를 스크롤하거나 크기를 변경해도 HTML 태그가 viewport(브라우저 윈도우)의 특정 위치에 고정하는 배치 방법
+left / top / bottom / right 프로퍼티로 뷰포트의 특정 위치 값을 지정. 
+
+
+# float 배치
+브라우저 크기르 변경하면 텍스트나 이미지가 다음 줄로 내려가는 등 위치가 변한다. float 프로퍼티를 지정하면 태그를
+우측 혹은 좌측에 항상 배치 시킬 수 있음. float 은 항상 같은 위치에 출력하려는 공지 혹은 광고 창 등에 적합
+
+
+# z-index  3차원 축 깊이
+z index 는 HTML 태그를 z축을 따라 쌓는 순서 stacking order 를 지정하는 프로퍼티로 값이 클수록 위에 놓임.
+기본 z-index를 지정하지 않은 태그들은 z-index 0으로 간주
+z-index는 position 프로퍼티가 static이 아닐 경우에만 작동
+
+
+# visibiliy
+visibility 속성을 이용해서 HTML 태그를 보이지 않게 처리 할 수 있음
+visibility: hidden 으로 적용하면 HTML 태그에 출력 공간을 할당한 채 보이지만 않게 처리 됨.
+visibility: visible / hidden
+
+
+# display: none 을 이용한 숨기기
+display: none 을 적용하면 마찬가지로 브라우저에서 보이지 않게 되는데, visibility: hidden과 차이점은 공간 할당 여부임.
+display:none은 공간 할당이 되지 않는다.
+
+
+# overflow
+overflow는 html 컨텐츠가 width와 height에 주어진 사이즈를 넘어가는 경우에 컨텐츠를 어떻게 처리할 것인지 지정하는
+프로퍼티로 블록태그에만 적용된다.
+.overflow 프로퍼티가 적용되려면 width와 height가 박스에 적용되어 있어야 한다.
+
+overflow에 적용 가능한 값:
+1.visible : (디폴트)컨텐츠가 잘리지 않고 태그 영역을 넘어서 출력
+2.hidden : 넘어가는 부분은 잘라서 보이지 않음
+3.scroll : 스크롤바를 항상 부착하여 출력
+4.auto : 컨텐츠가 박스 높이보다 넘치면 스크롤 바 생성
+
+
+
+# 리스트 관련 프로퍼티
+리스트는 데이터를 나열하는 목적의 태그로 목차나 메뉴 네이게이션 바를 만들거나 링크 모음 등 여러 용도로 활용 됨.
+list-style-type : 아이템 마커 타입 지정
+list-style-image : 아이템 마커 이미지 지정
+list-style-position : 아이템 마커 출력 위치 지정
+list-style : 위 3개 프로퍼티 한 번에 지정 가능한 단축 프로퍼티명
+
+
+# 마커위치 list-style-position
+inside | outside 값 지정
+outside가 디폴트
+
+
+# 마커 스타일 list-style-type
+square : 사각
+circle : 원
+upper-roman : I II III IV
+lower-alpha : a b c
+none : 없음
+decimal : 1 2 3
+
+
+
+# list-style 단축 프로퍼티
+list-style : list-style-type list-style-position list-style-image 형태로 여러 값을 단축 프로퍼티로 한 번에 지정
+
+
+
+
+
+</pre>
+
+<!--
+<div>div 박스1</div>
+<div id='down'>div 박스2</div>
+<div>div 박스3</div>
+<div id='up'>div 박스4</div>
+<div>div 박스5</div>
+
+<ul>
+<li class="I">list1</li>
+<li clsas=I"">list2</li>
+</ul>
+-->
+<p id='float'>공지사항1~~~~~~</p>
+<p id='float'>공지사항2~~~~~~</p>
+<p id='float'>공지사항3~~~~~~</p>
+<p id='float'>공지사항4~~~~~~</p>
+<p id='float'>공지사항5~~~~~~</p>
+
+<div>
+<img src='img/cat.jpg' width='200' height='200'>
+<p style='left: 170px; top:30px;'>1번 문단</p>
+<p style='left: 130px; top:20px;'>2번 문단</p>
+<p style='left: 90px; top:10px;'>3번 문단</p>
+<p style='left: 50px; top:0px;'>4번 문단</p>
+<p style='left: 10px; top:-10px;'>5번 문단</p>
+</div>
+
+
+<div id='fixed'>fixed 배치</div>
+
+
+<br><br><br><br><br><br><br>
+
+
+<img id="img1" src="img/1.png" width="100" height="100">
+<img id="img2" src="img/2.png" width="100" height="100">
+<img id="img3" src="img/3.png" width="100" height="100">
+
+
+<br><br><br><br><br><br><br>
+
+
+<ul>
+<li>list1 (<span>텍스트1</span>)</li>
+<li>list2 (<span>텍스트2222222222</span>)</li>
+<li>list2-2<span id='li22'>텍스트2-22</span></li>
+<li>list3 (<span>텍스트3</span>)</li>
+</ul>
+
+
+<br><br><br><br><br><br><br>
+
+
+<p class="hidden">overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+	overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+	overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow</p>
+<br>
+<p class="visible">overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+	overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+	overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow</p>
+<br>
+<p class="scroll">overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+	</p>
+<br>
+<p class="auto">overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+	</p>
+
+
+<br><br><br><br><br><br><br>
+
+
+<ul>
+<li>aaaaa</li>
+<li>bbbbb</li>
+<li>ccccc</li>
+</ul>
+
+
+<br><br><br><br><br><br><br>
+
+
+
+<br><br><br><br><br><br><br>
+
+
+
+<br><br><br><br><br><br><br>
+
+<style>
+/*
+li::after { content: '_'; }
+li::before { content: '*'; }
+
+
+div { display: inline-block; background: red; 
+	width: 100px; height: 100px; }
+li { display: inline-block; background: red }
+
+#down:hover { position: relative; left: 50px; top: -50px; background: green; }
+#up:hover { position: relative; left: 500px; bottome: 500px}
+*/
+
+
+div { display: inline-block; position: static; border: 1px solid black; }
+div > p { display: inline-block; position: absolute; width: 20px; height: 20px; background: green; }
+
+#fixed { position: fixed; bottom: 500px; right: 10px; width: 100px; padding: 5px; background: #8a2be2; }
+#float { float: right; border: 1px solid black; width: 8em; margin: 1em; }
+
+
+img { position: absolute; }
+#img1 { z-index : 0; left: 0px; top: 0px }
+#img2 { z-index : 1; left: 20px; top: 20px }
+#img3 { z-index : 3; left: 40px; top: 40px }
+#img3:hover { left: 300px; }
+#img2:hover { left: 300px; }
+#img1:hover { left: 300px; }
+
+
+span { visibility: hidden }		/* 컨텐츠 사이즈 만큼 공백 생성 */
+#li22 { display: none }
+
+
+p { width: 15em; height: 3em; border: 1px solid black; }
+.hidden { overflow: hidden; }
+.visible { overflow: visible; }
+.scroll { overflow: scroll }
+.auto { overflow: auto }
+
+
+ul { background: grey; padding: 10px 8px 7px 6px; list-style-position: inside; list-style-type: decimal;}
+ul li { background: yellow; margin-bottom: 5px; }
+
+ul { list-style: circle inside url('img/1.png')}
+
+
+
+
+
+
+
+
+
+
+</style>
+
+</body>
+</html>
