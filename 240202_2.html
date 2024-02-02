@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dropdown</title>
+</head>
+<body>
+    <div class="dropdown">
+        <button class="dropbutton">dropdown</button>
+        <div class="dropdown-content">
+            <a href="">menu1</a>
+            <a href="">menu2</a>
+            <a href="">menu3</a>
+        </div>
+    </div>
+</body>
+<style>
+    .dropdown {
+        /* position: relative; */
+        width: 1000px;
+        display: inline-block;
+        background-color: blanchedalmond;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #8a2be2;
+        min-width: 150px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+        z-index: 1;
+    }
+    .dropdown-content a{
+        color: black;
+        padding: 12px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover {
+        background-color: #9b5ad8;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;     /* dropdown에 마우스를 올리면 dropdown-content 가 보이도록 변환*/
+    }
+
+</style>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike 카피</title>
+</head>
+<body>
+    <header>
+        <div id="first">
+            <div class="logo">
+                <img src="img/nike/logo_j.png" alt="" height="24">
+                <img src="img/nike/logo_c.png" alt="" height="24">
+            </div>
+            <div class="etc">
+                <ul>
+                    <li class="cus">
+                        <span>매장 찾기</span>
+                        <span>|</span>
+                        <span>고객센터</span>
+                        <span>|</span>
+                    </li>
+                    <li class="login">
+                        <span>가입하기</span>
+                        <span>|</span>
+                        <span>로그인</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="second">
+            <img class="nike_logo" src="img/nike/logo1.png" alt="" height="30px">
+            <ul id="menu_list">
+                    <li class="NR">New Releases</li>
+                    <li class="men">Men</li>
+                    <li class="women">Women</li>
+                    <li class="sale">Sale</li>
+                    <li class="snkrs">SNKRS</li>
+            </ul>
+            <div class="search">
+                <img class="search_button" src="img/nike/search_button.png" alt="" width="24px">
+                <input class="search_text" type="text" placeholder="검색">
+            </div>
+            <div class="p_icons">
+                <img class="heart" src="img/nike/icon_heart.png" alt="" height="24px">
+                <img class="basket" src="img/nike/icon_basket.png" alt="" height="24px">
+            </div>
+        </div>
+        <div id="dropmenu">
+            <div class="drop_NR">
+                <ul>
+                    <li class="li_title">세부 제목</li>
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                    <li>내용4</li>
+                </ul>
+                <ul>
+                    <li class="li_title">세부 제목</li>
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                    <li>내용4</li>
+                </ul>
+                <ul>
+                    <li class="li_title">세부 제목</li>
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                    <li>내용4</li>
+                </ul>
+                <ul>
+                    <li class="li_title">세부 제목</li>
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                    <li>내용4</li>
+                </ul>
+                <ul>
+                    <li class="li_title">세부 제목</li>
+                    <li>내용1</li>
+                    <li>내용2</li>
+                    <li>내용3</li>
+                    <li>내용4</li>
+                </ul>
+            </div>
+        </div>
+        <div id="third">
+            <div class="container1">
+                <p>설 연휴 배송 및 고객센터 운영 안내</p>
+                <a href="">자세히 보기</a>
+            </div>
+            <div class="container2">
+                <p>웰컴 쿠폰: 앱 첫 구매 15% 할인 안내</p>
+                <p>나이키 멤버로 가입해서 더 나은 쇼핑을 경험해보세요.</p>
+                <a class="signUp" href="">가입하기</a>
+            </div>
+        </div>
+    </header>
+</body>
+<style>
+    body {margin: 0; padding: 0;}
+    
+    /* 첫번째 구역 */
+    #first {
+        display: flex;
+        background-color: rgb(240, 240, 240);
+        position: relative;
+        height: 36px;
+        padding: 5px 50px;
+        justify-content: space-between;
+    }
+    .logo {
+        display: inline-block;
+        margin-top: 6px;
+    }
+    .etc {
+        position: relative;
+        display: inline-block;
+        top: -9px;
+
+    }
+    .cus { display: inline-block; }
+    .login { display: inline-block; }
+    .etc span { margin-right: 5px;}
+
+    /* 두번째 구역 */
+    #second {
+        display: flex;
+        height: 64px;
+        padding: 20px 50px 0px 50px;
+    }
+    #menu {
+        display: inline-block;
+    }
+    #menu_list {
+        list-style-type: none;
+        font-weight: bold;
+        margin: 0 auto;
+    }
+    #menu_list > li {
+        display: inline-block;
+        padding: 0 12px;
+
+    }
+    .search {
+        /* display: inline-block; */
+        background-color: rgb(240, 240, 240);
+        width: 180px; height: 40px;
+        border-radius: 20px;
+        margin-right: 30px;
+    }
+    .search_text {
+        height: 20px; width: 110px;
+        background-color: rgb(240, 240, 240);
+        margin-left: 5px;
+        border: none;
+        outline: 0;
+    }
+    .p_icons {
+        display: inline-block;
+    }
+    .p_icons > img {
+        padding: 6px;
+        margin-left: 15px;
+    }
+
+    /* 세부 메뉴 구역 (hover) */
+    #dropmenu {
+        margin-top: 0px;
+    }
+    #dropmenu ul {
+        display: inline-block;
+        margin-right: 90px;
+        text-align: left;
+        list-style-type: none;
+    }
+    .drop_NR { 
+        text-align: center; 
+        /* display: none;  */
+    }
+    .li_title { 
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .NR:hover .drop_NR { display: block;}
+
+    /* 세번째 구역 */
+    #third {background-color: rgb(240, 240, 240);}
+    .container1{
+        width: 100%;
+    }
+    .container2{
+        width: 100%;
+    }
+    .signUp {display: flex;}
+
+</style>
+</html>
