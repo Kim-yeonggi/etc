@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>240205</title>
+</head>
+<body>
+    <pre>
+        # 외부 자바스크립트 파일 생성
+        js 폴더 내 xxx.js 파일 생성
+        # URL에 작성하는 JS 코드
+        a태그의 href에 JS 작성 가능
+
+        # 자바스크립트 내장 다이얼로그 함수
+        # prompt() 함수
+        # 사용자의 입력 및 메세지 출력
+        사용자에게 메세지 출력하거나 입력 받을 수 있는 내장 함수가 여러가지 있음
+
+        prompt 함수는 다이얼로그를 출력하고 사용자로부터 문자열을 입력받아 리턴하는 함수
+        promt 함수의 매개변수는 메시지, 디폴트 입력값 2가지 
+        디폴트 입력값은 생략 가능
+
+        # confirm 확인 다이얼로그 함수
+        confirm 함수는 메시지와 확인 취소에 따라 True/flase를 리턴한다.
+
+        # alert 경고창 함수
+
+
+
+        # 자바스크립트의 식별자
+        1. 첫번째 문자 : 언더스코어나 알파벳
+        2. 두번째 문자 : 알파벳, 언더스코어, 숫자
+        3. 대소문자를 구분한다.
+
+        # 자바스크립트 주석처리
+        여러줄 : /* 주석하려는 내용, 코드 */
+        한 줄 : // 로 주석 처리
+
+
+        # 자바스크립트의 데이터 타입
+        자바스크립트 C 언어 기반
+        1. 숫자타입 12345
+        2. 논리(불) 타입 true false
+        3. 문자열 타입 : 문자와 문자열 구분 X
+        4. 객체 타입
+        5. null : 값이 없음을 표현하는 키워드
+
+
+        # 자바스크립트의 변수 선언 방법
+        1. var
+        2. let
+        3. const
+
+
+        var은 자바스크립트 언어 초기부터 있던 선언 방식
+        ES6(ECMAScript6 스크립트 표준) 이후로 let과 const가 추가 됨
+
+
+        # 지역변수 전역변수
+        전역변수 : 함수 밖에서 선언되거나 var/let 키워드 없이 선언된 변수
+        - 프로그램이 실행 시작할 때 생겨나서 프로그램 종료 시까지 살아있음.
+        프로그램 전역에 걸쳐 사용 가능
+
+        - 지역변수 : 함수 내에서 var/let 키워드를 통해 생성된 변수. 함수가 시작되면 생기고 함수가 종료되면 소멸,
+        함수 내에서만 사용가능
+
+        - 블록 변수 : let 키워드로 if / while / for 등 블록 내에서 선언된 변수, 블록 내에서만 사용
+        블록이 끝나면 사라짐, 블록 바깥에서 접근 불가
+
+
+
+
+        # let 키워드의 특징
+        let은 var 사용시 문제 개선을 위해 es6 이후 생긴 키워드
+        var는 동일한 변수를 재선언 할 수 있다.
+        let은 동일한 변수를 재선언 할 수 없다.
+
+        var를 이용하면 동일 변수 선언에 의한 문제가 있을 수 있다.
+
+        let은 변수 사용 범위를 블록 내로 제한
+
+        
+
+        # const 상수
+        상수는 변하지 않는 값
+        const는 선언과 동시에 초기 값을 할당해야 함.
+        상수 선언시 식별자 대문자로 작성.
+        상수는 값 업데이트 불가
+        상수는 재선언 불가
+        let과 마찬가지로 선언된 블록 범위 내에서만 사용
+
+
+        # 호이스팅 이란
+        자바스크립트의 인터프리터 실행기가 코드 전체 실행 전에 함수, 변수, 클래스 등을
+        맨 위로 끌어올려 선언을 읽는 것
+
+
+        # 리터럴
+        리터럴이란 데이터 값 자체를 의미
+        정수 8진수 : 015 : 8진수 15를 의미
+        정수 10진수 : 15 : 10진수 15
+        정수 16진수 : 0x15 : 16진수 15
+
+        실수 : 0.1234
+
+        논리 : true / false
+
+        문자열 : "" or '' 로 묶어서 처리
+
+        null : 값이 없음을 뜻하는 타입
+
+        NaN : 숫자가 아님을 뜻하는 타입 (Not a Number)
+
+
+
+        # 연산자
+        산술 +-*/ / 대입 = += -= / 증감 ++ -- / 비교 < > <= >= == / 논리 && || ! / 조건 ? :
+
+        
+        # 문자열 연산 +
+
+        "hello" + 20    가능
+
+        # 문자열 비교 연산
+
+
+
+
+        # 조건문
+        if / else if / else
+        
+
+        # 형변환 parseInt() 숫자로 변환
+
+
+        # switch 문
+        switch(식)  // switch에는 식
+        {
+            case1 값:   // case에는 값  
+                break;
+            case2 값:
+                break;
+            default:
+                //
+        }
+
+
+
+        # for 반복문
+
+        <!-- for(let i=0; i <10; i++)
+        {
+            수행문;
+        } -->
+
+        # while 반복문
+        while (조건식) {
+            수행문;
+        }
+
+        # break continue
+
+
+        # while문과 break을 이용해서
+        # 1에서 얼마(n)가지를 더해야 사용자가 입력한 숫자보다 커지는지 알아내는 코드를 작성
+        # n을 출력
+
+
+
+
+
+        # 함수
+
+        function 함수명(매개변수){
+            return 대상물;
+        }
+
+
+
+
+
+
+        # 자바스크립트의 전역 내장 함수
+        eval() : 수식이나 자바스크립트 문장을 문자열 형태로 전달 받아 결과 리턴
+        문자열을 수식으로 계산해준다.
+
+        parseInt() : 문자열을 숫자로 변환함.
+
+        isNaN() : NaN은 숫자가 아님을 나타내는 리터럴 키워드로 Not a Number의 의미
+
+        ParseFloat() : 문자열을 실수로 변환
+
+
+
+        
+        
+        # 자바스크립트의 코어 객체와 배열
+        1. 코어 객체
+        2. HTML DOM 객체
+        3. 브라우저 관련 객체 BOM 객체
+        4. window 객체
+
+
+
+        # 코어 객체
+        1. Array
+        2. Date
+        3. String
+        4. Math
+
+        # 코어 객체 생성할 때 new 키워드 사용한다.
+
+        코어 객체의 생성은 항상 new 키워드를 이용한다.
+        let today = new Date();
+        today = 참조(레퍼런스) 변수
+
+        # today 객체 접근 .
+
+        today.프로퍼티
+        today.함수()
+        변수 = today.프로퍼티
+        today.프로퍼티 = 값
+
+
+
+
+        # 코어 객체 - 배열 Array
+        배열은 여러 원소 연속 저장 데이터 구조
+        let arr=['A', 'B', 'C'] 형태로 C#과 동일
+
+        배열의 각 원소는 [] 기호와 0부터 시작하는 인덱스 사용
+
+
+        #배열을 만드는 방법 2가지
+        1. Array 객체 활용
+        2. 대괄호 []로 생성
+
+        var arr1 = ['a', 'c']
+        위 배열의 크기는 2로 생성 -> 인덱스 0, 1로 사용
+
+        arr1[3] 선언된 배열 사이즈를 벗어나는 3인덱스 사용시 3번칸 생성
+        arr1[3] = 'b';
+        arr1[10] = 'z'; 형태로 값 입력시
+        기존 0,1,2 인덱스와 10인덱스 사잉의 3,4,5,6,7,8,9는 빈 칸으로 형성
+        arr1의 3~9 인덱스는 정의되지 않은 undefined 출력됨
+
+        Array로 배열 만들기
+        코어객체 Array를 이용해서 배열 생성하려면
+        let w = new Array("a", "b");
+        형태로 new 키워드와 코어객체명 Array를 함께 작성하여 배열 객체 생성
+
+        두 방법 중 어떤 방법으로 생성해도 동일한 배열 객체가 생성되고,
+        배열 관련 프로퍼티 및 배열 관련 메서드 활용, 인덱스 활용 방식은 동일
+
+        # 초기화 되지 않은 배열 생성 (값이 할당되지 않은)
+        let x = new Array(10);
+        10개의 칸을 가진 배열 생성, 값은 할당되지 않음.
+
+        let y = new Array();
+        칸도 지정되지 않은 빈 배열 생성
+
+        => Array를 통한 배열 생성 3가지 방법
+        1. new Array() : 빈 배열
+        2. new Array(10) : 칸만 선언된 배열
+        3. new Array('a', 'b', 'c') : 값 할당까지 된 배열
+
+
+
+        # 배열은 여러 타입의 데이터가 섞여 저장될 수 있다.
+        정수, 실수, 문자열, 논리값, 객체, 함수 등 여러 타입 데이터를 혼용 가능
+
+
+
+        # 배열의 length 프로퍼티
+        length 프로퍼티를 이용해서 배열의 요소 수를 알 수 있음.
+        length 프러퍼티는 읽기 전용 프로퍼티이다.
+        length 프로퍼티에 사용자가 임의 값을 지정할 수 없음.
+
+
+
+        # 배열 관련 메서드
+        1. concat(arr) : 현재 배열에 arr 배열을 덧붙여 만든 새 배열 리턴
+        2. join() : 배열의 모든 원소를 연결하여 하나의 문자열로 만들어 리턴
+        3. reverse() : 배열 뒤집기
+        4. slice(idxA) : 배열을 idxA 부터 끝까지 잘라냄
+        5. sort : 배열을 유니코드 표 순서로 정렬
+        6. toString() : 원소를 모두 연결하여 하나의 문자열로 변환 후 리턴
+
+
+
+
+
+        # Date 객체
+        데이트 객체는 시간 정보를 담은 객체. Date 객체도 new 키워드를 사용하여 생성
+        new Date()를 호출하면 현재 시간으로 초기화 된 Date 객체를 리턴 받음. 
+
+
+        # 특정 날짜 객체 생성
+        let Day = new Date(2022,2,2) 형태로 2022년 2월 2일 날짜 객체 생성 가능
+
+
+        # Date 객체에서 월 month 정보는 0부터 시작하낟. 0이 1월을 의미, 11은 12월을 의미한다. 
+        let now = new Date(); 현재 연월일시간 정보 객체
+        let date = now.getDate(); now 객체에서 오늘 날짜를 얻음. 
+        let hour = now.getHours(); now 객체에서 현재 시간을 얻음. 
+
+
+        # Date 객체 생성 방법
+        1. new Date()
+        2. new Date(y, m, d) 연월일 정보를 가진 객체 생성
+        3. new Date(y, m, d, hour, min, sec) 시간 정보를 가진 객체 생성
+
+
+        # Date 객체 관련 메서드
+        getFullYear() 네 자리 연도 리턴
+        getMonth() 월 정보 리턴 0부터 11까지 숫자로 리턴 됨
+        getDate() 한 달 내의 날짜 리턴 (1~31 사이)
+        getDay() 한 주 내 요일을 정수로 리턴, 일요일=0 ~ 토요일=6
+        getHours() 0~23 사이의 정수 시간 리턴
+        getMinutes() 0~59 사이의 정수 분 리턴
+        getSeconds() 0~59 사이의 정수 초 리턴
+        getMilliSeconds() 0~999 사이의 밀리 초 리턴
+        getTime() UTC 기준 1970년 1월 1일 0시 0분 0초 기준 경과된 현재 밀리초 단위
+        위 get으로 시작되는 함수들을 전부 set으로 바꿔 동일하게 작성하면 리턴을 통한 조회가 아닌 
+        설정으로 작동됨 ex: setFullYear(2022)  2022년으로 설정
+
+        toUTCString() 객체에 든 시간 정보를 UTC 문자열로 리턴
+        toLocalString() 객체에 든 시간 정보를 로컬 표현의 문자열로 리턴
+        toLocalTimeString() 시간정보만 10:14:22 식으로 표현
+
+        Local : 지역, 장소 => GMT 9 기준의 한국에서의 출력 결과와
+        다른 나라에서 실행 결과는 다르게 나옴, 장소 GMT 값 반영
+
+        # 스크립트 태그 내에 Date 객체 생성 후 위 Date 관련 메서드 모두 적용, 출력
+        # document.write 혹은 console.log로 출력
+
+
+
+
+        # String 객체
+        문자열 객체 String은 new 키워드 사용하여 생성
+        let hello = new String('hello');
+        let hello = 'hello';
+        두 방식 사용 가능
+
+        # String 객체는 수정 불가
+        String 객체는 생성 후 내부 문자열 수정 불가능
+
+
+        # String 문자열의 길이 length 프로퍼티
+
+
+        # 인덱스 사용 가능
+
+
+
+        # String 관련 메서드
+        charAt(idx) : 인덱스에 있는 문자를 리턴
+        charcodeAt(idx) : 인덱스에 있는 문자의 16비트 유니코드 대응 값 리턴
+        concat(s1, s2) : 현재 문자열 뒤에 문자열 s1, s2를 붙임
+        indexOf(s) : 문자열 s 가 처음 나타나는 위치 인덱스값 리턴
+        replace(a, b) : 문자열 내 a를 b로 변환
+        slice(idx) : idx부터 끝까지 잘라냄
+        split(분리자) : 분리자를 기준으로 문자열을 분리
+        substr(idx) : idx부터 문자 끝까지 리턴
+        substring(idx1, idx2) : idx1부터 idx2 앞까지 두 인덱스 사이의 문자열 리턴
+        trim() : 공백 제거
+        toLowerCase() : 소문자로 변환
+        toUpperCase() : 대문자로 변환
+        fromCharCode(문자) : 문자를 문자열로 만들어 리턴
+
+
+        # Math 객체
+        Math 객체는 new Math() 형태 사용하지 않는다. 
+        Math.프로퍼티
+        Math.메서드()
+
+        random 난수 바라생 함수가 math에 포함되어 있다.
+        math 객체 주요 메서드
+        abs(n) : n의 절대값
+        sin(n) : 사인 n 값
+        pow(x, y) : x의 y 제곱 리턴
+        random() : 0~1 사이 임의의 난수 리턴
+        floor(x) : x 보다 작거나 같은 수 중 가장 큰 정수 리턴(내림) Math.floor(3.2) => 3 
+        round(x) : x 를 반올림한 정수 리턴
+        sqrt(x) : x의 제곱근 리턴
+
+        Math 객체의 프로퍼티
+        PI 원주율 3.141592 ~~~~~~
+
+
+        # script 태그에 사용자 입력을 한 번 받아서
+        # 사용자 입력은 주사위 수
+        # 주사위 범위 1~6 까지 범위
+        # console.log 통해서 주사위 마다 숫자 출력
+        <!-- # 합계 출력 -->
+        # 모든 주사위의 평균을 round() 한 결과가 4가 넘는지 출력
+
+        # 같은 숫자가 3개 이상 나왔는지 판단 -> 중복 3개 이상 성공 출력 아니면 실패
+        # 매 턴 숫자 구성이 어떤지 출력
+
+        # 사용자는 주사위를 총 3번까지만 던질 수 있음.
+        # 주사위 수 한번에 5~8개 까지만 던질 수 있음.
+        # 만약 5~8을 벗어나면 기회 1회 깎임
+
+        # 점수 체계가 있음
+        # 8개를 던지는 것이 유리하기 때문에 점수 차등 발생
+        # 1턴에 3개 일치를 뽑으면 3점 / 2턴에 하면 2점 3턴에 하면 1점
+
+        # 5개를 던지면 점수에 x3 배 / 6개를 던지면 점수에 x2 배 / 7개를 던지면 점수에 x1.5 배
+
+
+    </pre>
+    
+    <img src="img/cat.jpg" alt="image" onmouseover="over(this)" onmouseout="witerspan(this)">
+    <a href="javascript:alert('알림')">클릭</a>
+    <br><br><br><br><br><br>
+
+    <style>
+
+    </style>
+    <script>
+        // document.write('<br><br>111111');
+        // document.write('<h3>h3 태그</h3>');
+        // document.write('<div>div 태그</div>');
+        
+        // var x = prompt("입력창");
+        // console.log(x);
+        
+        // var tf = confirm("confirm 함수 호출");
+        // console.log(tf);
+        // if (tf == true){
+        //     console.log('동의함')
+        //     function over(obj) {
+        //         obj.src = 'img/2.png';
+        //         console.log("over 함수 호출")
+        //     }
+        //     function out(obj) {
+        //         obj.src = 'img/1.png';
+        //         console.log("out 함수 호출")
+        //     }
+        // }
+        // else {
+        //     console.log('동의 안함')
+        // }
+
+        // var score;
+        // var a,b,c;
+        // var aa='123';
+
+        // score = 123123;
+
+        // // 자바스크립트에서는 변수 데이터 타입을 고려하지 않는다.
+
+        // let x;      // 전역변수
+        // function f()
+        // {
+        //     let y;  // 지역변수
+        //     x=10;   // 전역변수
+        //     y=20;   // 지역변수 y에 값 할당
+        //     z=30;   // 전역변수 z 선언
+        //     if(y==20)   // 지역변수
+        //     {
+        //         let b=40;   // 블록변수
+        //         b++;    // 블록변수
+        //     }
+        // }
+
+
+
+        // var xx = 10;    // 전역
+        // let yy = 20;
+        // function ff()
+        // {
+        //     var xx;     // 지역
+        //     xx = 1;     // 지역 변수 xx
+        //     this.xx=100;    // 전역변수 xx 
+        //     // this. == global
+            
+        //     console.log(xx);
+        //     console.log(this.xx); // this 키워드는 전역변수 지정. var로 선언된 전역 변수는 this로 출력 가능
+        //     console.log(this);  // this는 window 객체를 의미
+
+        //     console.log(this.yy);   // let으로 선언된 전역 변수는 this로 출력 안됨
+            
+        //     // window.document.write(12341234);
+        //     // window.alert();
+        //     // window.confirm();
+        // }
+        
+        // ff();
+
+        // for (let n=0; n<10; n++)
+        // {
+        //     let xxx=10;
+        // }
+
+        // console.log(xxx);
+
+        // var b = prompt("입력");     // 자동 형변환
+        // // var b = parseInt(prompt("입력"));
+        // if (b > 50)
+        // {
+        //     console.log("50보다 큼");
+        // }
+        // else if (b > 60)
+        // {
+        //     console.log("60보다 큼");
+        // }
+        // else
+        // {
+        //     console.log("그 외")
+        // }
+
+        // for (let size=10; size<=350; size+=5)
+        // {
+        //     document.write("<span ")
+        //     document.write("style='font-size:"+size+"px'>");
+        //     document.write(size+"px")
+        //     document.write("</span><br>")
+        // }
+        
+        // function witerspan()
+        // {
+        //     document.write("<span ")
+        //     document.write("style='font-size:"+1000+"px'>");
+        //     document.write(1000+"px")
+        //     document.write("</span><br>")
+        // }
+
+
+
+        // var n = 1;
+        // var count = 1;
+        // var input = prompt("정수 입력");
+        // while(input >= n)
+        // {
+        //     count += 1;
+        //     n += count;
+        //     console.log(count);
+        //     console.log(n);
+        // }
+        // alert(count);
+
+        // function adder(a,b){
+        //     return a+b;
+        // }
+
+
+
+        // let today = new Date();
+        // document.write("현재 시간: "+ today.toLocaleString() + "<br>");
+
+        // let mystr = new String("hello js");
+        // document.write("mystr의 내용: " + mystr + "<br>");
+        // document.write("mystr의 길이: " + mystr.length + "<br>");
+
+        // let now = new Date();
+        // console.log(now.getFullYear());
+        // console.log(now.getMonth());
+        // console.log(now.getDate());
+        // console.log(now.getHours());
+        // console.log(now.getMinutes());
+        // console.log(now.getSeconds());
+        // console.log(now.getMilliseconds());
+        // console.log(now.getTime());
+
+        // console.log(now.toUTCString());
+        // console.log(now.toLocaleString());
+        // console.log(now.toLocaleTimeString());
+
+
+        // var str = new String('0123456 8');
+        // console.log(str.charAt(3));
+        // console.log(str.concat("9", "s2"));
+        // console.log(str.indexOf("4"));
+        // console.log(str.replace("4", "4444"));
+        // console.log(str.slice(5));
+        // console.log(str.split(" "));
+        // console.log(str.substr(5));
+        // console.log(str.substring(1, 4));
+        // console.log(str.trim());
+        // console.log(str.toLowerCase());
+        // console.log(str.toUpperCase());
+
+        // var dice = prompt("주사위 수 입력");
+        // var sum = 0;
+        // for (let i=0; i<dice; i++)
+        // {   
+        //     var temp_dice = Math.floor(Math.random()*6)+1;
+        //     sum += temp_dice;
+        //     console.log(temp_dice);
+        // }
+        // console.log(sum);
+
+        // var avg = sum / dice;
+        // if (Math.round(avg) > 4)
+        // {   
+        //     console.log(avg, "반올림한 평균이 4보다 큼")
+        // }
+        // else
+        // {
+        //     console.log(avg, "반올림한 평균이 4보다 작거나 같음");
+        // }
+        
+        count = 3;
+        while(count > 0)
+        {
+            var dice = prompt("주사위 수 입력(5 ~ 8)");
+            count--;
+            var nums = new Array();
+            var result = false;
+            var mul = 8;
+            
+            if (dice == 8) {
+                mul = 1;
+            }
+            else if (dice == 7) {
+                mul = 1.5;
+            }
+            else {
+                mul -= parseInt(dice);
+            }
+
+            if (dice > 8 || dice < 5)
+            {   
+                console.log("기회 -1 / 주사위 수 다시 입력")
+                continue;
+            }
+            else
+            {
+                for (let i=0; i<dice; i++)
+                {   
+                    var temp_dice = Math.floor(Math.random()*6)+1;
+                    console.log(temp_dice)
+                    nums = nums.concat(temp_dice);
+                }
+            }
+            
+            for (var k=1; k <= 6; k++)
+            {   
+                var num_count = 0
+                for (var j=0; j <= nums.length; j++)
+                {
+                    if(k==nums[j]) {
+                        num_count += 1;
+                    }
+                }
+                if (num_count >= 3)
+                {   
+                    result = true;
+                    break;
+                }
+            }
+
+            if (result == true)
+            {
+                console.log("점수 : ", (count+1)*mul);
+                break;
+            }
+            else{
+                console.log('실패');
+                continue;
+            }
+
+        }
+        
+
+
+
+
+        
+
+    </script>
+    <!-- <script src="js/240205_1.js">
+    </script> -->
+</body>
+</html>
