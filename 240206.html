@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>240206</title>
+</head>
+<body>
+    <pre>
+        ### 문제 ###
+        # 사용자로부터 맞출 숫자와 갯수를 입력받음.
+
+        # 페이지에 5개의 가려진 주사위가 있고
+        # 각 5개의 가려진 주사위에 마우스를 올리면
+        # 1~6중 랜덤으로 하나에 해당하는 주사위 이미지로 변경된다.
+        # 5개의 가려진 주사위를 전부 마우스를 올려 오픈하면
+        # 5개의 주사위 중 사용자가 입력한 숫자와 갯수가 일치하면 성공
+        # 실패시 처음부터 반복
+
+
+        # 오전 문제에서 HTML 구조에 생성한 5개의 이미지 태그를 obj 매개변수를 통해서만 접근할 수 있었고,
+        # function 바깥에서는 obj를 사용할 수 없었음.
+
+
+
+
+
+        # Javascript 코드에서 전역적으로 특정 태그를 접근할 수 있도록 하는 방법 : DOM 객체 활용
+        
+        # DOM 객체
+        # Document Object Model
+        # HTML 객체 모델
+        # HTML 구조에 있는 개별 태그들을 JS에서 (script태그에서)사용할 수 있도록 함.
+
+        # BOM 객체
+        # Browser Object Model
+        # BOM 객체에는 window 객체와 history 객체 등이 있다. 
+        
+        # 코어 객체
+        # 자바스크립트의 코어 객체는 array string Date math 등이 있다.
+
+
+        # DOM
+        # 브라우저는 HTML 페이지가 로드되는 과정에서 각 HTML 태그를 하나의 객체로 만든다.
+        # HTML DOM 은 W3C 표준으로 모든 브라우저에 호환된다.
+        # HTML에 구성된 구조를 JS 를 통해 동적으로 제어하려면 DOM 객체화를 진행해야함. 
+
+
+        # BOM
+        브라우저에 관한 정보를 제공하거나 브라우저의 모양을 제어하는 등 관련 객체
+        window / screen / history 객체가 포함되어 있음.
+
+
+
+        # DOM 객체를 통해 가능한 것
+        1. HTML 태그의 생성 / 삭제 / 수정
+        2. HTML에 적용된 CSS의 생성 / 삭제 / 수정
+        3. HTML 문서가 로딩된 후 HTML 구조의 변경
+        4. HTML 내부의 컨텐츠의 수정
+
+
+        # DOM 트리
+        브라우저는 HTML 페이지를 로드하면서 HTML 태그의 포함 관계에 따라 DOM 객체를 트리구조로 만드는데
+        이것을 돔트리 라고 한다.
+
+        자바스크립트는 위 과정에서 생성된 DOM Tree 구조를 통해 특정 object(element)에 접근하는 것임
+
+        DOM 객체의 종류는 HTML 태그의 종류만큼 있다. 
+
+        document는 DOM 객체가 아니다.
+
+        HTML 태그 당 DOM 객체가 하나씩 생성된다.(브라우저에 의해)
+
+        DOM트리는 HTML 태그의 포함 관계에 따라 부모, 자식, 형제 관계로 구성된다.
+
+
+        브라우저는 HTML페이지를 읽으면서 동시에 태그를 출력하는 것이 아니라 DOM 객체를 생성하고
+        DOM트리를 구성한 후, DOM 객체를 화면에 출력하는 것임
+
+
+        HTML 페이지는 문서가 로드된 뒤에 사라지고, 브라우저에는 DOM객체와 DOM트리 구조만 남는다.
+
+        따라서 JS코드로 DOM 객체를 제어하면 브라우저에서 HTML 태그의 모양이나 컨텐츠가 바뀐다.
+
+
+
+        # DOM 객체의 구성 요소
+        DOM 객체는 HTML 태그의 속성이 그대로 반영되어 만들어진다.
+        HTML 태그의 속성 : attribute
+
+        # html 태그의 요소
+        html 태그는 element 라고도 부르고, html 요소는 5가지로 구성
+        1. element name( = tag name)
+        2. property : id class 등
+        3. style : 스타일
+        4. event listener : 스크립트 함수
+        5. content : 내용
+
+        위 5가지 요소는 DOM 객체화 되는 과정에서 모두 포함된다.
+
+        HTML 태그에는 속성 / 스타일 / 이벤트 리스너 / 컨텐츠 / 태그네임 5요소
+
+        DOM에도 위 5요소를 반영하여 동일하게 구성됨.
+
+
+        # DOM 객체의 5 구성 요소
+        1. 프로퍼티 : DOM 객체의 멤버변수로 HTML 태그의 속성을 반영
+        2. 메서드 : DOM 객체의 멤버 함수, HTML 제어에 활용
+        3. 컬렉션 : 정보 집합 데이터 구종
+        4. 이벤트리스너 : HTML 이벤트리스너와 동일
+        5. 스타일 : HTML에 적용된 스타일
+
+
+        
+        # DOM 트리 노드간 관계
+        1. parent : 부모
+        2. previousElementSibling : 이전 형제
+        3. nextElementSibling 다음 형제
+        4. lastElementChild 마지막 자식 
+        5. firstElementChild 첫 자식
+        6. children : 자식들
+
+        위 6가지 프로퍼티를 통해 DOM 트리의 루트에서 모든 노드를 탐색 가능
+
+
+
+
+        # DOM 객체의 주요 프로퍼티
+        1. id : id 속성
+        2. style : 스타일
+        3. title : 제목
+        4. tagName : 태그명
+        5. innerHTML : 컨텐츠
+        6. childElementCount : 자식 수
+        7. firstElementChild : 첫 자식
+        8. lastElementChild : 마지막 자식
+        9. nextElementSibling : 오른쪽 옆 형제
+        10. previousElementSibling : 왼쪽 옆 형제
+        11. parentElement : 부모 요소
+        12. offsetHeight : 높이(패딩, 테두리, 포함)
+        13. offsetWidth : 너비(패딩, 테두리 포함)
+        14. offsetLeft : left 값
+        15. offsetTop : top 값
+
+
+        # 컬렉션
+        1. children : 컬렉션 자식 DOM 객체들의 집합
+
+
+        # 메서드
+        1. addEventListener() : 이벤트 리스너 속성 등록
+        2. appendChild() : 자식 추가
+        3. click() : 클릭
+        4. focus() : 포커스 지정
+        5. setAttribute() : 속성 지정
+        6. insertBefore() : 지정된 자식 앞에 새 자식 추가
+        7. querySelector() : getElementById를 대체할 수 있는 객체화 지목 방법
+        8. removeChild() : 자식 삭제
+        9. replaceChild() : 자식 대체
+        10. removeEventListener() : 이벤트 리스너 속성 삭제
+        11. getAttribute() : 속성 조회
+
+
+
+
+
+    </pre>
+    
+    <!-- 문제 -->
+    <!-- <img src="img/dice/d0.png" alt="" width="150px" height="150px" onclick="userClick(this)">
+    <img src="img/dice/d0.png" alt="" width="150px" height="150px" onclick="userClick(this)">
+    <img src="img/dice/d0.png" alt="" width="150px" height="150px" onclick="userClick(this)">
+    <img src="img/dice/d0.png" alt="" width="150px" height="150px" onclick="userClick(this)">
+    <img src="img/dice/d0.png" alt="" width="150px" height="150px" onclick="userClick(this)"> -->
+
+    <p id="firstP" style="color: blue; background: yellow;" onclick="this.style.color='teal'">
+    이것은 <span style="color: red;">문장입니다.</span>
+    </p>
+
+</body>
+<!-- <script>
+    /*
+    // 문제
+    var dice = parseInt(prompt("맞출 숫자 입력"));
+    var number = parseInt(prompt("갯수 입력"));
+    var num_list = new Array();
+    var rand;
+    var count = 0;
+
+    function userClick(obj)
+    {
+        if(obj.src.indexOf("d0.png") != -1)
+        {
+            rand = Math.floor(Math.random()*6)+1;
+            obj.src = 'img/dice/d' + rand + '.png';
+            num_list = num_list.concat(rand);
+            console.log("click 함수 호출");
+            console.log(num_list);
+            if (num_list.length == 5)
+            {
+                for(var j=0; j<num_list.length; j++)
+                {
+                    if(num_list[j] == dice)
+                    {
+                        count++;
+                    }
+                }
+                if(count==number)
+                {
+                    num_list = new Array();
+                    count = 0;
+                    console.log("성공");
+                }
+                else
+                {
+                    console.log("실패");
+                }
+            }
+        }
+    }
+    */
+
+    /*
+    var selectedArr = []; // 선택된 주사위 담는 배열
+    var imagearr = ["img/dice/d1.png", "img/dice/d2.png", "img/dice/d3.png", "img/dice/d4.png", "img/dice/d5.png", "img/dice/d6.png"];
+    var userinput = prompt("주사위 입력");
+    var usercount = prompt("숫자 입력");
+    var found = 0;
+    function userClick(obj)
+    {
+        if(obj.src.indexOf('d0.png') != 1) // 처음 누르는건지
+        {
+            rand = Math.floor(Math.random()*imagearr.length);
+            obj.src = imagearr[rand];
+            selectedArr.push(rand);
+            if(selectedArr.length == 5)
+            {
+                while(true)
+                {
+                    console.log(selectedArr);
+                    if(selectedArr.indexOf(userinput-1) != 1)
+                    {
+                        selectedArr[selectedArr.indexOf(userinput-1)] = null;
+                        found++;
+                        continue;
+                    }
+                    else
+                    {
+                        console.log(found==usercount);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    */
+</script> -->
+<!-- <script>
+    let p = document.getElementById("firstP");
+    let text = "p.id = " + p.id + "\n";
+    text += "p.tagName = " + p.tagName + "\n"
+    text += "p.innerHTML = " + p.innerHTML + "\n"
+    text += "p.style.color = " + p.style.color + "\n"
+    text += "p.onclick = " + p.onclick + "\n"
+    text += "p.childElementCount = " + p.childElementCount + "\n"
+    text += "너비 = " + p.offsetWidth + "\n"
+    text += "높이 = " + p.offsetHeight + "\n"
+
+    alert(text);
+</script> -->
+<script>
+    var objarr = [a,b,c,d,e];
+    
+    function shuffle(arr)
+    {
+        var resultarr=[];
+        var target=objarr.length;
+        for (var x = 0; x<target; x++)
+        {
+            r = Math.floor(Math.random()*objarr.length);
+            resultarr.push(objarr.splice(r-1,1)[0]);
+        }
+        return resultarr;
+    }
+    console.log(shuffle(objarr));
+</script>
+
+</html>
