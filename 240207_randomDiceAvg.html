@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="new-dice">
+        <button id="create-dice" onclick="createNewDice()" style='margin: 20px;'>주사위 생성</button>
+    </div>
+
+</body>
+<style>
+</style>
+<script>
+    var num_list;
+    var rand;
+    var count = 0;
+    var dice_number = 1;
+    var created_dice;
+
+    var sum;
+    var avg;
+
+    function createNewDice()
+    {
+        document.close()
+        sum = 0;
+        avg = 0;
+        num_list = new Array();
+
+        created_dice = Math.floor(Math.random()*20) + 1;
+        
+        document.write(
+            "<button id='create-dice' onclick='createNewDice()' style='margin: 20px;'>주사위 생성</button><br>"
+            );
+
+        for(var i=0; i<created_dice; i++)
+        {
+            rand = Math.floor(Math.random()*6)+1;
+            document.write("<img id='dice" + (i+1) + "' src='img/dice/d" + rand + ".png' alt='' width='150px' height='150px'>")
+            num_list = num_list.concat(rand);
+            sum += rand;
+        }
+        console.log(num_list);
+
+        avg = sum / num_list.length;
+        document.write("<br><p>주사위의 평균은 " + avg + " 입니다.</p>");
+    }
+</script>
+</html>

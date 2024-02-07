@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="third" style="background-color: lightgray;">
+        <div class="slide">
+            <div class="banner">
+                <p>설 연휴 배송 및 고객센터 운영 안내</p>
+                <a href="">자세히 보기</a>
+            </div>
+            <div class="banner">
+                <p>설 연휴 기념 매장 픽업 서비스 이벤트 안내</p>
+                <a href="">자세히 보기</a>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {margin: 0; padding: 0;}
+
+    #third { width: 100%; }
+    #third div { 
+        text-align: center;
+    }
+    @keyframes sliders {
+        0%, 20% { transform: translateX((0%));}
+        40%, 60% { transform: translateX(-50%);}
+        80%, 100% { transform: translateX(0%);}
+    }
+    .slide {
+        display: flex;
+        animation: sliders 10s infinite;
+        animation-direction: reverse;
+        width: 200%;
+        justify-content: start;
+    }
+    .banner { width: 100%; }
+
+</style>
+</html>

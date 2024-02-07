@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>240207</title>
+</head>
+<body>
+    <pre>
+        # DOM 객체를 JS코드로 식별하는 방법
+        # document 객체의 메서드 / 컬렉션 / 프로퍼티
+        
+        # 프로퍼티
+        location : 현재 문서의 URL 정보를 가진 객체
+        readyState : 문서의 현재 로딩 상태
+        title : 문서 제목
+        head : 헤드 객체
+        body : 바디 객체
+        activeElement : 현재 포커스 된 요소
+
+        # 컬렉션
+        images : 문서 내 img 객체들의 컬렉션
+        link : 문서 내 링크 객체들 컬렉션
+        form : 문서 내 폼 객체 컬렉션 
+        
+        # 메서드
+        # id를 제외하고는 전부 복수형(Elements)
+        document.getElementById('a') : id
+        document.getElementsByClassName() : 클래스명
+        document.getElementsByName() : name 속성
+        document.getElementsByTag() : 태그명
+        addEventListener() : document 객체에 이벤트 리스너 추가
+        close() : document 객체에 HTML 컨텐츠를 브라우저에 전부 출력하고 더이상 쓰기를 받지 않음.
+        createElement() : HTML 태그의 동적 생성 - 현재 문서를 유지하면서 원하는 위치에 태그 추가
+        removeEventListener() : 인벤트 리스너 제거
+        write() : 쓴다.
+        writeln() : 쓴다. (줄바꿈 된다)
+
+
+
+
+    </pre>
+
+    <div onclick="minus()"> - </div>
+    <img src="img/dice/d3.PNG" alt="">
+    <div onclick="plus()"> + </div>
+    
+    
+    <!-- <br><br><br>
+    <div onclick="xxx()">color button</div> -->
+
+
+
+</body>
+<style>
+    div {
+        display: inline-block; border: 3px solid red;
+        font-size: 50px; width: 20px; height: 50px;
+        margin: 40px; padding: 10px;
+        }
+</style>
+<script>
+    var divs = document.getElementsByTagName("div");
+    var imgs = document.getElementsByTagName("img");
+    var dice_number = 3
+
+    function minus() {
+        dice_number--;
+        if (dice_number == 0) {
+            dice_number = 6
+        }
+        imgs[0].src = "img/dice/d" + dice_number + ".PNG"   
+    }
+
+    function plus() {
+        dice_number++;
+        if (dice_number == 7) {
+            dice_number = 1
+        }
+        imgs[0].src = "img/dice/d" + dice_number + ".PNG"   
+    }
+
+
+    
+    // function xxx() {
+    //     var divs = document.getElementsByTagName("div");
+    //     // console.log(divs);
+    //     // console.log(divs[0]);
+    //     // console.log(divs[0].innerHTML);
+    //     // console.log(divs[1].innerHTML);
+    //     // console.log(divs[2].innerHTML);
+
+    //     for(var i=0; i<divs.length; i++)
+    //     {
+    //         // console.log(i+"번 div : " + divs[i].innerHTML);
+    //         divs[i].style.color = "#8a2be2";
+    //     }
+    // }
+</script>
+</html>

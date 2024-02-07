@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <pre>
+        ### 문제 ###
+        # 사용자로부터 맞출 숫자와 갯수를 입력받음.
+
+        # 페이지에 5개의 가려진 주사위가 있고
+        # 각 5개의 가려진 주사위에 마우스를 올리면
+        # 1~6중 랜덤으로 하나에 해당하는 주사위 이미지로 변경된다.
+        # 5개의 가려진 주사위를 전부 마우스를 올려 오픈하면
+        # 5개의 주사위 중 사용자가 입력한 숫자와 갯수가 일치하면 성공
+        # 실패시 처음부터 반복
+
+
+        # 오전 문제에서 HTML 구조에 생성한 5개의 이미지 태그를 obj 매개변수를 통해서만 접근할 수 있었고,
+        # function 바깥에서는 obj를 사용할 수 없었음.
+
+
+        -> 변경
+        # 주사위에 마우스를 올리거나 클릭해서 여는 것이 아니라,
+        # HTML DIV로 만든 버튼을 누르면 임의의 주사위 하나가 뒤집힌다.
+        # prompt -> input창 2개를 생성해서 각각 입력 받는다.
+        # getElementById() 사용한다.
+
+
+        +
+        # 인풋 값이 비어있을 경우를 방지
+        # 중간에 값 바꾸는 부정행위 방지
+
+        +
+        # 주사위 생성 입력 / 버튼 만들어서 입력한 만큼 주사위 추가
+
+    </pre> -->
+    <div id="new-dice">
+        <input type="text" id="dice-count" value="" placeholder="생성할 주사위 수 입력">
+        <button id="create-dice" onclick="createNewDice()">주사위 생성</button>
+    </div>
+
+    <!-- <div id="user-input">
+        <input id="userDice" type="text" value="" placeholder="숫자 입력">
+        <input id="userNumber" type="text" value="" placeholder="갯수 입력">
+        <button id="button-open" onclick="userClick()">주사위 오픈</button>
+    </div>
+    <div>
+        <img id="dice1" src="img/dice/d0.png" alt="" width="150px" height="150px">
+        <img id="dice2" src="img/dice/d0.png" alt="" width="150px" height="150px">
+        <img id="dice3" src="img/dice/d0.png" alt="" width="150px" height="150px">
+        <img id="dice4" src="img/dice/d0.png" alt="" width="150px" height="150px">
+        <img id="dice5" src="img/dice/d0.png" alt="" width="150px" height="150px">
+    </div> -->
+    
+</body>
+<style>
+div {margin: 10px;}
+</style>
+<script>
+    var num_list = new Array();
+    var rand;
+    var count = 0;
+    var dice_number = 1;
+    var created_dice;
+
+    var sum = 0;
+    var avg;
+
+    function createNewDice()
+    {
+        created_dice = parseInt(document.getElementById("dice-count").value);
+
+        document.write(
+            "<div id='user-input'><input id='userDice' type='text' value='' placeholder='숫자 입력'><input id='userNumber' type='text' value='' placeholder='갯수 입력'><button id='button-open' onclick='userClick()'>주사위 오픈</button></div>"
+            );
+
+
+        for(var i=0; i<created_dice; i++)
+        {
+            document.write("<img id='dice" + (i+1) + "' src='img//dice//d0.png' alt='' width='150px' height='150px'>")
+        }
+    }
+
+    
+    function userClick()
+    {
+        var user_dice = parseInt(document.getElementById("userDice").value);
+        var user_number = parseInt(document.getElementById("userNumber").value);
+
+        if ((user_dice.toString() == "NaN" || user_number.toString() == "NaN") || (user_dice < 1 || user_dice > 6) || (user_number > created_dice))
+        {
+            alert("다시 입력하세요");
+        }
+        else
+        {
+            document.getElementById("userDice").style.display = "none";
+            document.getElementById("userNumber").style.display = "none";
+
+            
+            if(dice_number <= created_dice)
+            {
+                rand = Math.floor(Math.random()*6)+1;
+                document.getElementById("dice"+dice_number).src = 'img/dice/d' + rand + '.png';
+                num_list = num_list.concat(rand);
+                console.log("click 함수 호출");
+                console.log(num_list);
+
+                if (num_list.length >= created_dice)
+                {
+                    for(var j=0; j<num_list.length; j++)
+                    {   
+                        sum += num_list[j];
+
+                        if(num_list[j] == user_dice)
+                        {
+                            count++;
+                        }
+                    }
+                    document.write("<p>입력한 주사위 : " + user_dice +"</p>");
+                    document.write("<p>입력한 갯수 : " + user_number +"</p>");
+                    // let div = document.createElement('div');
+                    // let text1 = document.createTextNode("입력한 주사위 : "+user_dice + "\n" + "입력한 갯수 : " + user_number);
+                    // div.appendChild(text1);
+                    // document.body.append(div);
+
+                    if(count==user_number)
+                    {
+                        console.log("성공");
+                        document.write("<p>성공</p>");
+                        // let div2 = document.createElement('div');
+                        // let text2 = document.createTextNode('성공');
+                        // div.appendChild(text2);
+                        // document.body.append(div2);
+                    }
+                    else
+                    {
+                        console.log("실패");
+                        document.write("<p>실패</p>");
+                        // let p = document.createElement('p');
+                        // let text = document.createTextNode('실패');
+                        // div.appendChild(text);
+                        // document.body.append(p);
+                    }
+                    avg = sum / num_list.length;
+                    document.write("<br><p>주사위의 평균은 " + avg + " 입니다.</p>");
+                }
+            }
+            dice_number++;
+        }
+    }
+</script>
+</html>
