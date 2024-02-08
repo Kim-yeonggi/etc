@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onresize="myResize()" onwheel = "myWheel()">
+    <pre>
+        # HTML 문서의 동적 구성
+        HTML 문서의 로드가 완료된 document에 새로운 HTML을 추가하는 방법
+        (documnet.wirte == 추가 X, 새로운 documnet를 생성함)
+        JS 코드를 이용해 추가하고 싶은 HTML DOM 객체를 생성하여 DOM 트리에 추가 할 수 있다.
+
+        
+        # Step 1. DOM 객체의 동적 생성
+        document.createElement() 함수를 사용해서 새롭게 추가하여 DOM 객체를 생성할 수 있다.
+
+        var newDiv = document.createElement("div");
+
+        
+        # Step 2. 생성한 newDiv에 대한 프로퍼티 설정
+        newDiv.innerHTML = "동적으로 생성한 DIV";
+        newDiv.setAtrribute("id", "newDiv");     // id="newDiv"
+        newDiv.style.backgroundColor="black";
+
+
+        # Step 3. DOM 트리 구조에 삽입 
+        새롭게 동적으로 만든 DIV에 속성 설정까지 마친 후 DOM트리에 삽입
+        부모.appendChild(DOM객체);  // DOM 객체를 부모의 마지막 자식으로 삽입
+        부모.inserBefore(DOM객체, 기준자식);  // DOM객체를 부모의 자식 객체 중 기준자식 앞에 삽입
+
+
+        var p = document.getElementById('p');
+        p.appendChild(newDiv);
+
+
+        # Step 4. DOM트리 구조에서 특정 요소 삭제
+        부모.removeChild(삭제하려는 부모의 자식 객체);
+
+        var myDiv = document.getElementById("newDiv");
+        var parent = myDiv.parentElement;   // 해당 객체의 부모요소
+        parent.removeChild(myDiv);
+
+        위 방식으로 DOM 객체가 DOM트리에서 제거되면 브라우저 화면이 즉각 갱신됨.
+        삭제된 DOM객체에 의해 출력되던 컨텐츠가 문서에서 사라짐.
+        떼어낸 myDiv는 객체로서 JS내에 유지가 되기 때문에 DOM트리 구조 내 다른 위치에 다시 부착할 수 있음. 
+
+
+
+
+        # 이벤트
+        이벤트란 마우스 클릭, 키보드 입력, 이미지나 HTML 문서의 로딩, 타임 아웃 등
+        사용사의 입력, 문서나 브라우저의 상태 변화를 브라우저가 자바스크립트 코드에게 알리는 통지임.
+
+
+        # 이벤트리스너
+        발생한 이벤트에 적절한 대처를 위해 작성된 자바스크립트 코드를 이벤트 리스너라고 함.
+        이벤트가 발생하지 않으면 브라우저 화면에는 아무 변화가 없음.
+        이벤트가 발생하면 브라우저는 개발자가 작성한 이벤트 리스너 코드를 호출해 이벤트를 처리하도록 한다.
+
+
+
+        # 이벤트의 종류
+        onkeydown : 키보드 누름
+        onkeypress : 알파뉴메릭 키 누름
+        onkeyup : 누른 키 놓음
+
+
+        onclick : 마우스 클릭
+        oncontextmenu : 마우스 우클릭
+        ondbclick : 더블클릭
+
+        onmousedown : 객체에 마우스 버튼이 눌러지는 순간
+        onmouseup : 눌러진 마우스를 놓는 순간
+        
+        onmouseover : 마우스 커서가 객체 영역(자식 포함) 위로 올라옴
+        onmouseout : 마우스 커서가 객체 영역(자식 포함)에서 벗어나는 순간
+        
+        onmouseenter : 마우스 커서가 객체 영역 안으로 들어가는 순간
+        onmouseleave : 마우스 커서가 객체 영역에서 떠나는 순간
+        
+        onmousemove : 마우스가 움직이는 모든 순간
+        
+        onwheel : 마우스 휠 굴림
+
+
+        onabort : 이미지나 문서 로딩이 중단되는 경우
+        onerror : 이미지나 문서 로드 중 오류가 발생한 경우
+        onload : 이미지나 문서 로드가 완료된 경우
+        
+        onresize : 브라우저 사이즈가 변경되는 경우
+        onfocus : 특정 객체가 포커스를 가지게 되는 경우
+        onchange : 특정 input 객체 내 내용이 바뀌는 경우
+        onreset : 사용자가 폼의 reset 을 하는 경우
+        onsearch : input의 search 에 텍스트 입력하고 엔터를 누른 경우
+        onselect : input text or password에 입력된 텍스트를 사용자가 선택할 때 (마우스로 드래그 선택)
+        onsubmit : submit 버튼을 누르는 경우
+
+
+
+
+        # 익명함수 : 이름이 없이 필요한 곳에 바로 작성하는 방식의 함수
+        p.onmouseover = function () {this.style.color = "white"};
+        p.addEventListener("mouseover", function () {this.style.color="while"})
+        익명함수로 이벤트 리스너 등록 방법 2가지
+        : 미리 함수로 정의하지 못한 경우 / 함수가 짧을 경우에만 사용
+
+
+        # 이벤트 객체 event object (event)
+        이벤트가 발생하면 브라우저는 발생한 이벤트에 관한 정보를 담은 이벤트 객체를 생성하며,
+        이벤트 리스너에게 전달함. 이벤트 객체의 이름은 event 임.
+        이벤트 처리가 끝나면 이벤트 객체는 소멸됨.
+
+        정의되어있는 함수에서 이벤트 객체를 받는 방법 :
+        function mdown(e) {  ~~~  }
+
+        익명함수에서 이벤튼 객체를 받는 방법 : 
+        function (e) { console.log(e) };
+
+
+
+        # 이벤트 객체에 들어있는 정보
+        이벤트 객체에는 발생한 이벤트에 관한 정보를 담고 있는 프로퍼티들과 이벤트의 흐름을 제어하는
+        여러 메서드가 담겨있음. 이벤트의 종류에 따랄 프로퍼티와 메서드가 다르다.
+        마우스 이벤트 객체의 경우에는 마우스의 좌표, 위치, 마우스 버튼 번호 등의 정보가 있고,
+        키보드 이벤트 객체의 경우 키의 charcode, keycode 등이 담겨 있다.
+
+        # 이벤트 타겟과 target 프로퍼티
+        타켓 프로퍼티는 이벤트가 일어나는 대상 객체를 가리킴.
+        이벤트 타켓이란 이벤트를 유발시킨 객체
+        button 태그에 등록된 onclick 이벤트 리스너를 통해 click 이벤트를 감지하면
+        click 이벤트의 타켓은 button 임
+
+
+        # 이벤트 객체의 공통 프로퍼티
+        type : 현재 발생한 이벤트의 종류
+        target : 현재 이벤트를 발생시킨 객체
+        currentTarget : 현재 이벤트 리스너를 실행하고 있는 DOM 객체
+        defaultPrevented : 이벤트의 디폴트 행동이 취소 상태인지 True False 로 나타냄
+
+        # 이벤트 객체 메서드
+        preventDefault() : 이벤트의 디폴트 행동을 취소시키는 메서드
+
+
+        # 이벤트의 흐름과 이벤트 리스너
+        발생한 이벤트는 타겟 전체에 전달되는데, 이벤트가 바로 타겟으로 전달되고 사라지는 것이 아니라
+        발생한 이벤트는 window 객체로부터 DOM트리 구조를 따라서 중간 DOM 객체 노드들을 거쳐
+        타겟 객체로 이동하고, 다시 이동한 경로를 반대로 거슬러 올라가 window에 도달 후 소멸된다.
+
+        이 과정을 이벤트의 흐름이라고 함. 이벤트가 흘러가는 경로에 있는 모든 DOM 객체들에게
+        순서대로 이벤트 객체가 전달되며, DOM 객체에 이벤트 리스너가 작성되어 있으면 모두 실행됨. 
+
+
+
+
+        # 이벤트의 단계
+        1. 캡쳐 단계
+        window 객체에서 타겟 객체까지 이벤트 객체가 전파되는 과정
+        window와 타겟 사이 노드 중간에 있는 모든 DOM 객체를 거쳐 전달되는데,
+        캡쳐 단계에서 실행되도록 작성된 이벤트 리스너가 있다면 흐름순으로 실행된다.
+        캡쳐단계에서 실행되도록 작성된 리스너를 캡쳐 리스너 라고 부른다. 
+
+
+        2. 버블 단계
+        다시 타겟객체에서 거꾸로 window 객체까지 타고 올라가는 과정. 
+        버블 단계에서 실행되도록 작성된 이벤트 리스너가 있다면 흐름순으로 실행된다.
+        버블 단계에서 실행되도록 작성된 리스너를 버블 리스너라고 부른다.
+
+
+        DOM 객체들은 동일한 이벤트에 대해 캡쳐 리스너와 버블 리스너를 모두 가질 수 있음. 
+
+        target = 사용자가 이벤트 발동한 DOM object
+        currentTarget (this) : 이벤트 리스너가 시리제로 등록되어 있는 대상.
+
+
+
+        # 이벤트의 흐름관련 프로퍼티와 메서드
+        cancelable : 디폴트 행동 취소 가능 여부 true / false
+        stopPropagation() : 객체에 등록된 리스너를 모두 실행 후 이벤트 흐름 중단
+        stopImmediatePropagation() : 현재 리스너만 실행하고 이벤트 흐름 즉각 중단
+
+
+
+    </pre>
+<!--     
+    <div onkeydown="myKeyDown(event)" onkeypress="myKeyPress()" onkeyup="myKeyUp(event)">키보드 누름
+        <input type="text">
+        <input type="text">input2
+    </div>
+    <div onclick="myClick()" oncontextmenu="myRightClick()" ondblclick="myDbClick()">마우스 클릭</div>
+    <div onmousedown="myButtonDown()" onmouseup="myButtonUp()">마우스 버튼 누르고 뗌</div>
+    <div onmouseover="myMouseOver()" onmouseout="myMouseOut()">마우스 커서 올라감, 내려감(자식 포함)
+        <p>자식 1</p>
+        <p>자식 2</p>
+    </div>
+    <div onmouseenter="myMouseEnter()" onmouseleave="myMouseLeave()">마우스 커서 영역내로 들아감 / 나감
+        <p>엔터 자식1</p>
+        <p>엔터 자식2</p>
+    </div>
+    <div onmousemove="myMouseMove()">마우스 움직임</div> -->
+
+    <a href="https://naver.com" onclick="return false">네이버 링크1</a>
+    <a href="https://naver.com" onclick="event.preventDefault()">네이버 링크2</a>
+
+
+
+
+</body>
+<style>
+    div { 
+        background-color: antiquewhite;
+        border: 2px solid black;
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+    }
+    p { 
+        background-color: aliceblue;
+        border: 2px solid black;
+        width: 50%;
+        height: 50%;
+        }
+</style>
+<script>
+    document.body.addEventListener("click", capture, true);
+    function capture(e) {
+        var obj = e.currentTarget;
+        var tagName = obj.tagName;
+        console.log(obj, tagName);
+    }
+
+
+    function myResize() {
+        console.log("resize");
+    }
+
+    function myKeyDown(e) {
+        kc = e.keyCode
+        console.log("키보드 키 누름11");
+        console.log(kc, "keycode");
+        console.log(e.target, "target");
+        console.log(e.target.nextElementSibling, "----target.nextelementsibling");
+        e.target.nextElementSibling.value = e.target.value;
+    }
+    function myKeyPress() {
+        console.log("특정 키 누름22");
+    }
+    function myKeyUp(e) {
+        // console.log("키보드 키 뗌");
+        // console.log(e.target.value);
+    }
+
+
+    function myClick() {
+        console.log("클릭함");
+    }
+    function myRightClick() {
+        console.log("우클릭");
+    }
+    function myDbClick() {
+        console.log("더블클릭");
+    }
+
+    function myButtonDown() {
+        console.log("버튼 누름");
+    }
+    function myButtonUp() {
+        console.log("버튼 뗌");
+    }
+
+    function myMouseOver() {
+        console.log("마우스 커서 올라감");
+    }
+    function myMouseOut() {
+        console.log("마우스 커서 내려감");
+    }
+
+    function myMouseEnter() {
+        console.log("마우스 커서 영역으로 들어감(엔터)");
+    }
+    function myMouseLeave() {
+        console.log("마우스 커서 영역 밖으로 나감(리브)");
+    }
+
+    function myMouseMove() {
+        console.log("마우스 움직임");
+    }
+    function myWheel() {
+        console.log("마우스 휠 굴림");
+    }
+</script>
+</html>
