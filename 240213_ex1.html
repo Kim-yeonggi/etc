@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>240213 예제1</title>
+</head>
+<body>
+    <h3>마우스 관련 이벤트 리스너</h3>
+    <hr>
+    <div>마우스 관련
+        <span onmousedown="down(this)"
+        onmouseup="up(this)"
+        onmouseover="over(this)"
+        onmouseout="out(this)"
+        onwheel="wheel(event, this)"
+        style="display: inline-block;">
+        이벤트</span>가 발생합니다.
+    </div>
+    <script>
+        let width = 1;
+        function down(obj) {    
+            obj.style.fontStyle = 'italic';
+        }
+        function up(obj) {
+            obj.style.fontStyle = 'normal';
+        }
+        function over(obj) {
+            obj.style.borderColor = 'violet';
+        }
+        function out(obj) {
+            obj.style.borderColor = 'lightgray';
+        }
+        function wheel(e, obj) {    // e는 이벤트 객체
+            if(e.wheelDelta < 0) {  // 휠을 아래로 굴림
+                width--;    // 폭 1 감소
+                if(width < 0){
+                    width = 0;  // 폭이 0보다 작아지지 않게
+                }
+            }
+            else{   // 휠을 위로 굴림
+                width++;
+            }
+            console.log(width);
+            obj.style.borderStyle = 'ridge';
+            obj.style.borderWidth = width + 'px';
+        }
+    </script>
+</body>
+
+</html>

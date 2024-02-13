@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>화살표 키로 셀 위로 이동하기</h3><hr>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+<style>
+    td { width: 50px; height: 50px; border: 1px solid orchid;}
+</style>
+<script>
+    let tds;
+    let prevIndex = 0; index = 0;
+    window.onload = function () {   // 웹 페이지 로딩 완료 시 실행
+        tds = document.getElementsByTagName("td");
+        tds[index].style.backgroundColor = "orchid";
+    }
+    window.onkeydown = function (e) {
+        switch(e.key) {
+            case "ArrowDown":
+                if (index/3 >= 2) return;
+                index += 3;
+                break;
+            case "ArrowUp":
+                if (index/3 < 1) return;
+                index -= 3;
+                break;
+            case "ArrowLeft":
+                if (index%3 == 0) return;
+                index--;
+                break;
+            case "ArrowRight":
+                if (index%3 == 2) return;
+                index++;
+                break;
+        }
+        console.log(index, prevIndex)
+        tds[index].style.backgroundColor = "orchid";
+        tds[prevIndex].style.backgroundColor = "white";
+        prevIndex = index;
+    }
+</script>
+    
+</html>

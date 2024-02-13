@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        # 240213
+        # 마우스 이벤트 핸들링
+        # 마우스 이벤트는 프론트 개발에서 가장 많이 활용
+        # 마우스 이벤트 객체의 프로퍼티
+        1. x,y : 타켓 객체의 부모 객체 내에서의 좌표
+        2. clientX, clientY : 브라우저 윈도우의 문서 출력 영역에서 좌표
+        3. screenX, screenY : 사용자 화면 기준 좌표
+        4. offsetX, offsetY : 타겟 객체 내에서의 좌표
+        5. button : 눌러진 마우스 버튼의 번호
+            -0 : 아무 버튼도 눌리지 않음
+            -1 : 왼쪽 버튼이 눌림
+            -2 : 오른쪽 버튼 툴림
+            -3 : 왼쪽 오른쪽 둘 다 눌림
+            -4 : 중간 버튼 눌림
+        6. wheelDalta : 마무스 휠 관련
+            음수 : 위쪽으로 휠 굴림 120
+            양수 : 아래쪽으로 휠 굴림 -120
+    </pre>
+
+    <form action="">
+        식<input type="text" id="exp" value=""><br>
+        값<input type="text" id="result">
+        <input type="button" value="계산" onclick="cal(event)">
+    </form>
+
+</body>
+<script>
+    var exp = document.getElementById("exp");
+    var result = document.getElementById('result');
+
+    result.nextElementSibling.addEventListener("mouseover",cal);
+    console.log(result.nextElementSibling);
+    result.nextElementSibling.onclick = cal();
+    result.nextElementSibling.addEventListener("mouseover",cal);
+    var exp2 = document.querySelector('#exp');
+    document.write(exp2);
+    
+    function cal(e) {
+        result.value = eval(exp.value);     // eval : 계산
+        document.write(e);
+        document.write(result.nextElementSibling);
+    }
+</script>
+
+</html>
