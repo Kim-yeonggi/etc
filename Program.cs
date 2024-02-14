@@ -1,9 +1,14 @@
-﻿using System;
+﻿// using Korea.Seoul;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+
+// using In = Korea.Incheon;
+
 
 //namespace ConsoleApp3
 //{
@@ -224,136 +229,717 @@ public class ClassAndMember
 // Array : 배열 관련 주요 메서드 및 속성
 */
 
-namespace Consolecp3
+
+//namespace Consolecp3
+//{
+//    /*
+//    namespace Y     // 중첩되어 있는 네임스페이스 내부 코드
+//    {
+//        public class XY
+//        {
+//            public void XYX() => Console.WriteLine("XYX");
+//        }
+//    }
+//    namespace X
+//    {
+//        public class XY
+//        {
+//            public void XYX() => Console.WriteLine("XYX");
+//        }
+//    }
+
+//    // System, System.Text 등 using으로 불러온 것들이 네임스페이스임
+//    // 네임스페이스를 만드는 이유는 프로그램 큐모가 커질 때 클래스 이름 중복 등 충돌 방지 목적
+//    // 네임스페이스를 다르게 만들면 동일한 클래스를 하나의 프로젝트에서 사용할 수 있다.
+//    // 서로 관련있는 기능 클래스, 구조체, 열거형 등을 묶는 개념
+//    // 클래스 이름 중복 방지
+//    // 클래스 계층형 구조 형성
+//    // 네임스페이스는 모듈의 의미와 비슷
+
+//    // namespace 네임스페이스명 으로 네임스페이스 구간 작성
+//    // 클래스와 마친가지로 첫 글자는 대문자로 작성(클래스와 동일)
+//    */
+
+
+
+//    //public class CheckMember
+//    //{
+//    //    // 240213
+//    //    public static void Main()
+//    //    {
+//    //        // 합계
+//    //        // 개수
+//    //        // 평균
+
+//    //        // 최대 최소
+//    //        /*
+//    //        int[] numbers = { -2, -5, -3, -7, -1 };     // 최대값, 최소값 알고리즘 구현
+//    //        int maxNum = 0;
+//    //        int minNum = 0;
+//    //        for(int i=0; i<numbers.Length-1; i++)
+//    //        {
+//    //            if (numbers[i] > numbers[i+1])
+//    //            {
+//    //                maxNum = numbers[i];
+//    //            }
+//    //            else
+//    //            {
+//    //                maxNum = numbers[i+1];
+//    //            }
+
+//    //            if (numbers[i] < numbers[i+1])
+//    //            {
+//    //                minNum = numbers[i];
+//    //            }
+//    //            else
+//    //            {
+//    //                minNum = numbers[i+1];
+//    //            }
+//    //        }
+//    //        Console.WriteLine($"최대값 : {maxNum} \n최소값 : {minNum}");
+
+//    //        Console.WriteLine("---------------------------------------------");
+//    //        Array.Sort(numbers);
+//    //        minNum = numbers[0];
+//    //        maxNum = numbers[numbers.Length-1];
+//    //        Console.WriteLine($"최대값 : {maxNum} \n최소값 : {minNum}");
+//    //        */
+
+
+//    //        // 순위
+//    //        /*
+//    //        int[] scores = { 90, 87, 100, 95, 80 };
+//    //        int[] ranking = Enumerable.Repeat(1, 5).ToArray();
+
+//    //        for (int s = 0; s < scores.Length; s++)
+//    //        {
+//    //            for (int i = 0; i<scores.Length; i++)
+//    //            {
+//    //                if (scores[s] <= scores[i])
+//    //                {
+//    //                    ranking[s]++;
+//    //                }
+//    //            }
+//    //            Console.WriteLine($"{scores[s]} : {ranking[s]-1}");
+//    //        }
+//    //        */
+
+
+//    //        // 정렬 오름차순 내림차순
+//    //        /*
+//    //        // 선택 정렬 : 데이터 하나 기준으로 나머지 데이터와 비교하여 자리를 바꾸는 행위를 반복, Temp 임시 변수 사용
+//    //        int[] numbers = { 5, 3, 4, 1, 2 };
+//    //        int Temp = 0;
+
+//    //        for (int i = 0; i < numbers.Length; i++)
+//    //        {
+//    //            for (int j = i+1; j < numbers.Length; j++)
+//    //            {
+//    //                if (numbers[i] > numbers[j])
+//    //                {
+//    //                    Temp = numbers[i];
+//    //                    numbers[i] = numbers[j];
+//    //                    numbers[j] = Temp;
+//    //                }
+//    //            }
+//    //        }
+
+//    //        foreach (int i in numbers) { Console.WriteLine(i); }
+//    //        */
+
+
+//    //        // 검색 : 이진 검색 : 정렬이 되어있다는 가정하에 가능
+//    //        /*
+//    //        int[] data = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+//    //        int n = data.Length;
+//    //        int search = 1;
+//    //        bool flag = false;
+//    //        int index = -1;
+//    //        int count = 0;
+
+//    //        int low = 0;
+//    //        int high = n-1;
+//    //        while (low <= high)
+//    //        {
+//    //            count++;
+//    //            int mid = (low + high) / 2;
+//    //            if (data[mid] == search)
+//    //            {
+//    //                flag = true;
+//    //                index = mid;
+//    //                break;
+//    //            }
+//    //            if (data[mid] > search)
+//    //            {
+//    //                high = mid - 1;
+//    //            }
+//    //            else
+//    //            {
+//    //                low = mid + 1;
+//    //            }
+//    //        }
+//    //        if (flag)
+//    //        {
+//    //            Console.WriteLine($"숫자 {search}, 위치 {index}, 시도횟수 {count}");
+//    //        }
+//    //        else
+//    //        {
+//    //            Console.WriteLine("none");
+//    //        }
+//    //        */
+
+//    //        // 병합
+
+//    //        // 최빈값
+
+
+//    //    }
+//    //}
+
+
+
+//    /*
+//    // C#에서의 사용자 정의 클래스를 통한 인스턴스 생성시 new 키워드 사용
+//    public class Counter
+//    {
+//        public void GetCount()  // GetCount는 static이 지정되지 않은 인스턴스 멤버 형태임
+//                                // 인스턴스 멤버는 인스턴스를 통해 접근해야함
+//        {
+//            Console.WriteLine("count 100");
+//        }
+//    }
+//    class ObjectNote
+//    {
+//        static void Main()
+//        {
+//            Counter counter = new Counter();    // 인스턴스 생성
+//            counter.GetCount();     // 인스턴스를 통해 함수 호출
+//        }
+//    }
+//    */
+
+
+
+//    /*
+//    public class MyMath
+//    {
+//        public void sum(int x, int y)
+//        {
+
+//            int sum = x + y;
+//            Console.WriteLine(x + y);
+//        }
+//    }
+
+//    class pro
+//    {
+//        void Main()
+//        {
+//            var mymath = new MyMath;    // var 키워드로 식별자 선언하는 방식 : 익명 방식 or 무명 방식
+
+//            mymath.sum(3, 2);   
+//            int[] x = new int[3];
+//            // 정적 메버와 인스턴스 멤버
+//            // 클래스 내에 선언되는 모든 멤버는 위 2가지 유형 중 하나이다.
+//            // 정적 멤버이거나 인스턴스 멤버이거나
+//            // 선언시 static 키워드를 붙이면 정적 멤버
+//            // static 이 없으면 인스턴스 멤버
+//            // static 키워드가 붙은 멤버에 접근시   클래스 이름.엠버 이름
+//            // 인스턴스 멤버 접근 시   인스턴스명.멤버이름
+
+//            // static이 붙은 변수는 클래스 변수라고 함
+//            // static이 붙지 않은 변수는 인스턴스 변수라고 함
+//            // static은 공유의 의미
+//        }
+//    }
+//    */
+
+
+
+//    /*
+//    public class Category
+//    {
+//        public void Print(int i) => Console.WriteLine(i);
+//    }
+//    class ClassArray
+//    {
+//        static void Main()
+//        {
+//            Category[] category = new Category[3];  // 카테고리라는 클래스로 구성된 배열
+//            category[0] = new Category();       // 카테고리라는 클래스도 데이터 타입 중 하나로 취급
+//            category[1] = new Category();       // 해당 배열에는 카테고리 클래스의 인스턴스를 넣을 수 있따.
+//            category[2] = new Category();
+
+//            for (int i = 0; i < category.Length; i++)
+//            {
+//                category[i].Print(i);
+//                Console.WriteLine(category[i].ToString());
+//            }
+//        }
+//    }
+//    */
+//}
+
+
+//namespace A
+//{
+//    public class Car
+//    {
+//        public void Go() => Console.WriteLine("A 네임스페이스의 Car Go");
+//    }
+//}
+
+//namespace B
+//{
+//    public class Car
+//    {
+//        public void Go() => Console.WriteLine("B 네임스페이스의 Car의 Go");
+//    }
+//}
+
+//namespace Namespace
+//{
+//    static void Main()
+//    {
+//        A.Car acar = new A.Car();   // 네임스페이스 A 에 있는 class Car를 통해 만든 인스턴스
+//        B.Car bcar = new B.Car();   // 네임스페이스  B 에 있는 clas Car를 통해 만든 인스턴스
+//        acar.Go();
+//        bcar.Go();  // 네임스페이스가 적용되어 있는 클래스를 사용할 때 : 네임스페이스명.클래스 형태로 사용
+//    }
+//}
+
+
+/*
+namespace Korea
 {
-    public class CheckMember
+    namespace Seoul
     {
-        public static void Main()
+        public class Car
         {
-            // 합계
-            // 개수
-            // 평균
+            public void Run() => Console.WriteLine("서울 car run");
+        }
+    }
 
-            // 최대 최소
-            /*
-            int[] numbers = { -2, -5, -3, -7, -1 };     // 최대값, 최소값 알고리즘 구현
-            int maxNum = 0;
-            int minNum = 0;
-            for(int i=0; i<numbers.Length-1; i++)
+    namespace Incheon
+    {
+        public class Car
+        {
+            public void Run() => Console.WriteLine("인천 car run");
+        }
+    }
+}
+
+namespace NamespaceDescription
+{
+    class NamespaceDescription
+    {
+        static void Main() 
+        {
+            Korea.Seoul.Car s = new Korea.Seoul.Car();
+            s.Run();
+            Korea.Incheon.Car i = new Korea.Incheon.Car();
+            i.Run();
+
+            Car seoul = new Car();  // using Korea.Seoul
+            seoul.Run();
+
+            In.Car ic = new In.Car();   // using In = Korea.Incheon
+            ic.Run();
+        }
+    }
+}
+*/
+
+// 필드 : 클래스의 부품 역할, 클래스의 내부 상태 값 저장 용도의 변수 등
+// 클래스 내에 선언된 변수 또는 배열 등을 c#에서 필드라고 표현한다.
+// 필드는 대부분 private 액세스 한정자를 사용한다.
+// 클래스 내에서 데이터를 담는 역할
+// 필드는 개체의 상태를 저장한다.
+
+// 필드는 선언 후 초기화하지 않아도 자동으로 초기화된다.
+// int형 같은 경우는 0으로 초기화, string은 String.Empty(공백)로 자동 초기화
+// bool 형은 false, obj 필드는 null 값으로 초기화
+
+
+
+// 지역변수와 전역변수
+// C#에서 변수 선언시 Main() 메서드 같은 메서드 내에서 선언하거나 메서드 밖에서 선언이 가능하다.
+// 메서드 내에서 선언된 변수 또는 배열 등을 지역 변수라고 함.
+// 메서드 밖에서 선언된 변수 또는 배열 : 전역 변수라고 함
+// C#에서는 전역 변수라는 용어 사용하지 않고 메서드와 동일하게 엑세스 한정자를 붙여 필드라고 함
+
+
+// 지역변수 : 메서드가 종료되면 변수는 자동 소멸
+// 전역변수 (필드) : 메서드 내부가 아닌 클래스 내에 선언된 변수
+// C#에서 필드는 변수와 마찬가지로 주로 소문자로 식별자 이름 시작
+
+// 필드의 종류
+// 변수 형식의 필드 : 지역 변수와 마찬가지로 값을 대입하여 사용 가능
+// 상수 형식의 필드 : 필드와 비슷하지만 값을 한 번 초기화하면 다시 값을 바꿀 수 없음
+// 읽기 전용 필드 : readonly 키워드를 붙이는 읽기 전용 필드도 상수 필드와 비슷한 역할, 상수와 차이점 : 초기화시키지 않아도 됨
+// 배열 형식의 필드 : 배열을 필드레벨로 올린 개념, 값을 여러개 저장 가능
+// 개체 필드 : object 와 여러 개체를 담는 필드
+
+// public static int intNum : 정적인 정수 필드
+// public string str : 인스턴스 형식의 문자 필드
+// public int num : 인스턴스 정수 필드
+
+
+
+// private : 외부에서 진입 X 감춤
+// public : 외부에 공개
+// protectied : 상속받은 대상만 접근 가능
+// * 세가지 모두 현재 클래스 내부에서는 사용 가능 
+
+
+
+/*
+class Scope
+{
+    static string globalV = "전역변수";  // 전역변수 혹은 필드라고 표현
+    static void Main()
+    {
+        string loclaV = "지역변수";
+        Console.WriteLine(loclaV);  // 지역변수 출력
+        Console.WriteLine(globalV); // 전역변수 출력
+        Test();     // 같은 클래스(Scope) 내부에서 사용 -> 클래스명 없이 사용 가능 ( Scope.Test()) X )
+    }
+    static void Test() => Console.WriteLine(globalV);       // 전역변수 출력 함수
+}
+*/
+
+
+/*
+class Say
+{
+    private string message = "안녕하세요";
+    public string message2 = "hello";
+    public void Hi(string a)
+    {
+        //string message = "123";
+        Console.WriteLine(message);
+        this.message = a;    // this 키워드로 자신 클래스(say) 인스턴스인 개체 내부에 선언된 massage필드로 접근
+        Console.WriteLine(message);
+        
+    }
+}
+
+class FieldInitializer
+{
+    static void Main()
+    {
+        Say say = new Say();
+        say.Hi("반갑습니다.");
+        Console.WriteLine(say.message2);
+        say.message2 = "hello2222222";
+        Console.WriteLine(say.message2);
+    }
+}
+*/
+
+
+/*
+class Schedule
+{
+    private string[] weekDay = { "월", "화", "수", "목", "금", "토", "일" };
+    public void PrintWeekDay()
+    {
+        foreach (string day in weekDay)
+        {
+            Console.WriteLine(day);
+        }
+        Console.WriteLine();
+    }
+
+    public static void XX()        // public 이 없으면 static 있어도 접근 불가
+    {
+        // 클래스로 접근 가능
+        Console.WriteLine("XXXXXXXX");
+    }
+
+    public void XXX()       // 인스턴스로 접근 가능
+    {
+        Console.WriteLine("XXX#33333333333333");
+    }
+}
+
+class FieldArray
+{
+    static void Main()
+    {
+        Schedule schedule = new Schedule();
+        schedule.PrintWeekDay();
+        schedule.XXX();     // public -> 인스턴스 접근
+        Schedule.XX();      // public static -> 클래스 접근
+    }
+}
+*/
+
+
+/*
+// C# 생성자 함수
+// C#에서 생성자는 클래스에서 맨 먼저 호출되는 메서드로, 클래스 기본값 등을 설정한다.
+// 개체를 생성하면서 하고자하는 코드를 작성하는 부분(초기화 작업)
+// 생성자는 생성자 메서드라고도 함
+// 생성자 함수의 이름은 클래스의 이름과 동일하게 작성한다.
+// 생성자는 여러개가 선언될 수 있음
+// 생성자를 여러개 만드는 경우 : 생성자마다 매겨변수를 다르게 설정하여 여러개 만들 수 있음.
+// 메서드가 오버로드 되는것 처럼 생성자도 오버로드 됨
+// 생성자 함수는 void를 포함한 반환값을 가지지 않는다.
+// public 생성자 함수명  으로 작성
+
+
+//class Car
+//{
+//    public Car()
+//    {
+//        Console.WriteLine("생성자 함수 호출");
+//    }
+//    static void Main()
+//    {
+//        var car = new Car();    // 인스턴스가 생성될 때 자동으로 생성자 호출 실행
+//        Console.WriteLine("11111111111");
+//    }
+//}
+
+//public class Dog
+//{
+//    private string name;
+//    public Dog(string name)     // 매개변수 있는 생성자
+//    {
+//        this.name = name;
+//    }
+//    public string Cry()
+//    {
+//        return name + "Cry";
+//    }
+//}
+
+//class pro
+//{
+//    static void Main()
+//    {
+//        Dog dog1 = new Dog("1번 강아지");       // 인스턴스 생성시 매개변수 전달해야 함.
+//        dog1.Cry();
+
+//        Dog dog2 = new Dog("2번 강아지");
+//        dog2.Cry();
+//    }
+//}
+*/
+
+/*
+namespace ConstructorParameter
+{
+    class My
+    {
+
+        // private : 인스턴스 필드
+        private string _name;
+        private int _age;
+        private string _description = "ddddddd    ";
+
+        
+        public static string _x = "X";      // static : 공용 필드 (클래스 필드)
+
+        public string pname { 
+            get
             {
-                if (numbers[i] > numbers[i+1])
-                {
-                    maxNum = numbers[i];
-                }
-                else
-                {
-                    maxNum = numbers[i+1];
-                }
-                
-                if (numbers[i] < numbers[i+1])
-                {
-                    minNum = numbers[i];
-                }
-                else
-                {
-                    minNum = numbers[i+1];
-                }
+                //return "프로퍼티를 통한 이름 get";
+                return _name;       // 항상 return 이 있어야함
             }
-            Console.WriteLine($"최대값 : {maxNum} \n최소값 : {minNum}");
-
-            Console.WriteLine("---------------------------------------------");
-            Array.Sort(numbers);
-            minNum = numbers[0];
-            maxNum = numbers[numbers.Length-1];
-            Console.WriteLine($"최대값 : {maxNum} \n최소값 : {minNum}");
-            */
-
-
-            // 순위
-            /*
-            int[] scores = { 90, 87, 100, 95, 80 };
-            int[] ranking = Enumerable.Repeat(1, 5).ToArray();
-
-            for (int s = 0; s < scores.Length; s++)
+            set
             {
-                for (int i = 0; i<scores.Length; i++)
-                {
-                    if (scores[s] <= scores[i])
-                    {
-                        ranking[s]++;
-                    }
-                }
-                Console.WriteLine($"{scores[s]} : {ranking[s]-1}");
-            }
-            */
+                _name = "프로퍼티를 통한 이름 set";
+            } 
+        }       // 프로퍼티 // "public 반환형식 프로피티명 {get; set;}" 으로 작성
+        // 위 pname 프로퍼티는 get을 통해 프로퍼티값을 조회할 수 있고
+        // set을 통해 프로퍼티값을 할당할 수 있음.
+        // 프로퍼티도 static이 없기 때문에 이스턴스 마다 분리
+        // 외부에 공개되는 필드라고 여김
+        // set을 세터 get을 게터로 표현해도 됨
+
+        //public string pname { get; set; }   // 초깃값
+
+        //public string pname { get; private set; }   // set 에 private : 값 설정이 안됨 => 읽기 전용
+
+        public My(string name, int age)
+        {
+            this._name = name;
+            this._age = age;
+            this._description += name;
+            _x = name;      // 매개변수 있는  My가 호출되어야 _x 에 name 초기화
+        }
+        public My()
+        {
+            Console.WriteLine("생성자 호출");
+        }
+
+        public void PrintMy()
+        {
+            Console.WriteLine("{0} {1}",this._name, this._age);
+        }
+
+        public void PrintMy2()
+        {
+            Console.WriteLine(this._description);
+            Console.WriteLine(_x);
+        }
+    }
+
+    class ConstructorParameter
+    {
+        static void Main()
+        {
+            My myinfo = new My("name 전달", 222);
+            myinfo.PrintMy();
+            myinfo.PrintMy2();
+
+            My my = new My();
+            //my.PrintMy();
+
+            my.PrintMy2();
 
 
-            // 정렬 오름차순 내림차순
-            /*
-            // 선택 정렬 : 데이터 하나 기준으로 나머지 데이터와 비교하여 자리를 바꾸는 행위를 반복, Temp 임시 변수 사용
-            int[] numbers = { 5, 3, 4, 1, 2 };
-            int Temp = 0;
+            my.pname = "프로퍼티";                  // set
+            Console.WriteLine(my.pname);        // get
+            
+            myinfo.pname = "프로퍼티2";              // set
+            Console.WriteLine(myinfo.pname);    // get
+            Console.WriteLine(my.pname);
+        }
+    }
+}
+*/
 
-            for (int i = 0; i < numbers.Length; i++)
+
+
+/*
+// 문제) 클래스 필드, 인스턴트 필드, 프로퍼티의 get, 프로퍼티의 set, 메서드, 생산자를 포함하는 클래스 구조 만들기
+// 계좌 클래스 만들기
+
+// 입금
+// 출금
+// 송금(상대방 은행과 계좌번호를 입력해서 송금) : 인스턴스 간의 교류
+// 잔액 조회 : 프로퍼티
+
+// 생성자 함수에 추가
+// 계좌번호 : 필드 private       ->  10자리 숫자, 앞 4자리 1111 고정, 다음 2자리 랜덤, 0001 부터 순차 증가
+// 예금주 : 필드 private         ->  이름
+// 은행명 : 필드 private         ->  myBank
+// 통장 개설일 : 필드 private     date 클래스 활용해서 인스턴스 생성 시점으로 자동 배치 [연/월/일] 
+// 
+*/
+
+namespace CustomBank
+{
+    class Account
+    {
+        public static string bank = "mybank";
+
+        private string myBank;
+        private string myName;
+
+        //public Random random = new Random();
+        
+        private string numberF = "1111";
+        private string numberM;
+        public static int numberL= 1;
+
+        private string numbers;
+        private string myDate;
+
+        static Random rand = new Random();
+        int num1 = rand.Next(0, 10);
+        int num2 = rand.Next(0, 10);
+
+        private int money;
+        private string myMoney;
+        public static string[] account_list;
+
+        public static string[] member_list;
+        
+        public Account()
+        {
+            Console.Write("이름 입력: ");
+            string name = Console.ReadLine();
+            this.myName = name;
+            this.myBank = bank;
+            this.numberM = $"{num1}{num2}";
+            this.numbers = this.numberF + numberM + numberL.ToString().PadLeft(4, '0');
+
+            DateTime today = DateTime.Today;
+            this.myDate = $"{today.Year}{today.Month}{today.Day}";
+            this.money = 0;
+            this.myMoney = money.ToString();
+
+            account_list = new string[] { myBank, myDate, myName, numbers, myMoney };
+            //Account.member_list[numberL - 1] = account_list;
+            numberL++;
+        }
+
+        public void PrintMy()
+        {
+            Console.WriteLine($"{this.myBank}   이름 {this.myName}   계좌 {this.numbers}   개설일 {this.myDate}   잔액 {this.money}원");
+        }
+
+        public void Deposit()
+        {
+            Console.WriteLine($"입금 계좌 정보: 이름 {this.myName}   계좌 {this.numbers}   잔액 {this.money}원");
+            Console.Write("입금할 금액 입력: ");
+            string tempMoney = Console.ReadLine();
+            int addMoney = Convert.ToInt32(tempMoney);
+            this.money += addMoney;
+            Console.WriteLine($"이름 {this.myName}   계좌 {this.numbers}   개설일 {this.myDate}   잔액 {this.money}원");
+        }
+
+        public void Withdraw()
+        {
+            Console.WriteLine($"출금금 계좌 정보: 이름 {this.myName}   계좌 {this.numbers}   잔액 {this.money}원");
+            Console.Write("입금할 금액 입력: ");
+
+            string tempMoney = Console.ReadLine();
+            int subMoney = Convert.ToInt32(tempMoney);
+            if (this.money < subMoney)
             {
-                for (int j = i+1; j < numbers.Length; j++)
-                {
-                    if (numbers[i] > numbers[j])
-                    {
-                        Temp = numbers[i];
-                        numbers[i] = numbers[j];
-                        numbers[j] = Temp;
-                    }
-                }
-            }
-
-            foreach (int i in numbers) { Console.WriteLine(i); }
-            */
-
-
-            // 검색 : 이진 검색 : 정렬이 되어있다는 가정하에 가능
-            /*
-            int[] data = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            int n = data.Length;
-            int search = 1;
-            bool flag = false;
-            int index = -1;
-            int count = 0;
-
-            int low = 0;
-            int high = n-1;
-            while (low <= high)
-            {
-                count++;
-                int mid = (low + high) / 2;
-                if (data[mid] == search)
-                {
-                    flag = true;
-                    index = mid;
-                    break;
-                }
-                if (data[mid] > search)
-                {
-                    high = mid - 1;
-                }
-                else
-                {
-                    low = mid + 1;
-                }
-            }
-            if (flag)
-            {
-                Console.WriteLine($"숫자 {search}, 위치 {index}, 시도횟수 {count}");
+                this.money = 0;
             }
             else
             {
-                Console.WriteLine("none");
+                this.money -= subMoney;
             }
-            */
+        }
 
-            // 병합
+    }
 
-            // 최빈값
+    class System : Account
+    {
+        //public static string[] member_list = new string[numberL-1];
+        public static string[] member_list = new string[numberL-1];
+
+
+        public static void trans()
+        {
+            Console.Write("송금할 계좌번호 입력 : ");
+            string temp_number = Console.ReadLine();
+            Console.Write("송금할 금액 입력 : ");
+            string temp_money = Console.ReadLine();
+        }
+    }
+
+    class CustomBank
+    {
+        static void Main()
+        {
+            Account bank1 = new Account();
+            bank1.PrintMy();
+
+            Account bank2 = new Account();
+            bank2.PrintMy();
+            
+            Account bank3 = new Account();
+            bank3.PrintMy();
+
         }
     }
 }
